@@ -1,1 +1,347 @@
-<p>tuto11 works!</p>
+<div class="container my-5">
+    <div class="row">
+        <div class="col">
+            <h1 class="mb-4 text-primary">
+                <i class="bi bi-palette"></i> Tutoriel 11 : Manipulation des
+                Pixels en p5.js
+            </h1>
+
+            <h2 class="mt-5 text-success">1. Introduction</h2>
+            <p>
+                Introduction à la manipulation des pixels pour créer des effets
+                visuels intéressants.
+            </p>
+
+            <h2 class="mt-5 text-success">
+                2. Configuration de l'environnement
+            </h2>
+            <ol>
+                <li>
+                    Utilisez le même fichier HTML que dans les tutoriels
+                    précédents pour configurer l'environnement :
+                </li>
+                <div class="code-container">
+                    <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;p5.js Tutorial&lt;/title&gt;
+  &lt;!-- Inclusion de la bibliothèque p5.js --&gt;
+  &lt;script src="p5.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;!-- Inclusion du fichier JavaScript contenant notre code p5.js --&gt;
+  &lt;script src="sketch.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </div>
+                <p>Explication :</p>
+                <ul>
+                    <li>
+                        Ce code crée une structure de base pour une page web
+                        avec un fichier HTML.
+                    </li>
+                    <li>
+                        La balise
+                        <code
+                            >&lt;script src="p5.min.js"&gt;&lt;/script&gt;</code
+                        >
+                        inclut la bibliothèque p5.js dans notre projet.
+                    </li>
+                    <li>
+                        Le fichier <code>sketch.js</code> contiendra notre code
+                        p5.js.
+                    </li>
+                </ul>
+            </ol>
+
+            <h2 class="mt-5 text-success">
+                3. Mise en place du canvas et des paramètres
+            </h2>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        a) Initialisation de la taille du canvas
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <h4>Exemple :</h4>
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="code-container">
+                                <pre><code class="language-javascript">function setup() &#123;
+  createCanvas(400, 400); // Crée un canvas de 400x400 pixels
+  background(220); // Remplit le fond avec une couleur gris clair
+  noLoop(); // Empêche draw() de boucler en continu
+&#125;</code></pre>
+                                <button
+                                    class="btn btn-primary mt-2"
+                                    (click)="
+                                        runSketch(sketch1Container, sketch1)
+                                    "
+                                >
+                                    <i class="bi bi-play-fill"></i> Run
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div
+                                class="sketch-container"
+                                #sketch1Container
+                                id="sketch1"
+                            ></div>
+                        </div>
+                    </div>
+                    <p>Explication :</p>
+                    <ul>
+                        <li>
+                            <code>createCanvas(400, 400)</code> : Crée un canvas
+                            de 400x400 pixels.
+                        </li>
+                        <li>
+                            <code>background(220)</code> : Remplit le fond du
+                            canvas avec une couleur gris clair.
+                        </li>
+                        <li>
+                            <code>noLoop()</code> : Empêche la fonction
+                            <code>draw()</code> de boucler en continu, utile
+                            pour des manipulations de pixels statiques.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2 class="mt-5 text-success">4. Accéder aux pixels du canvas</h2>
+            <p>
+                Nous allons utiliser les fonctions <code>loadPixels()</code> et
+                <code>updatePixels()</code> pour accéder et manipuler les pixels
+                du canvas.
+            </p>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        Exemple 1 : Inversion des couleurs
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <h4>Exemple :</h4>
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="code-container">
+                                <pre><code class="language-javascript">function setup() &#123;
+  createCanvas(400, 400);
+  background(220);
+
+  // Dessin initial
+  noStroke();
+  for (let x = 0; x &lt; width; x += 40) &#123;
+    for (let y = 0; y &lt; height; y += 40) &#123;
+      fill(random(255), random(255), random(255));
+      rect(x, y, 40, 40);
+    &#125;
+  &#125;
+
+  // Inversion des couleurs
+  loadPixels();
+  for (let i = 0; i &lt; pixels.length; i += 4) &#123;
+    pixels[i] = 255 - pixels[i]; // Inverse la composante rouge
+    pixels[i + 1] = 255 - pixels[i + 1]; // Inverse la composante verte
+    pixels[i + 2] = 255 - pixels[i + 2]; // Inverse la composante bleue
+  &#125;
+  updatePixels();
+&#125;</code></pre>
+                                <button
+                                    class="btn btn-primary mt-2"
+                                    (click)="
+                                        runSketch(sketch2Container, sketch2)
+                                    "
+                                >
+                                    <i class="bi bi-play-fill"></i> Run
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div
+                                class="sketch-container"
+                                #sketch2Container
+                                id="sketch2"
+                            ></div>
+                        </div>
+                    </div>
+                    <p>Explication :</p>
+                    <ul>
+                        <li>
+                            Dessin initial : Crée un motif en dessinant des
+                            rectangles colorés aléatoirement sur le canvas.
+                        </li>
+                        <li>
+                            Inversion des couleurs : Inverse les valeurs de
+                            chaque composante de couleur pour tous les pixels.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3 class="card-title">Exemple 2 : Effet de flou</h3>
+                </div>
+                <div class="card-body">
+                    <h4>Exemple :</h4>
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="code-container">
+                                <pre><code class="language-javascript">function setup() &#123;
+  createCanvas(400, 400);
+  background(220);
+
+  // Dessin initial
+  noStroke();
+  for (let x = 0; x &lt; width; x += 40) &#123;
+    for (let y = 0; y &lt; height; y += 40) &#123;
+      fill(random(255), random(255), random(255));
+      rect(x, y, 40, 40);
+    &#125;
+  &#125;
+
+  // Effet de flou
+  loadPixels();
+  let pixelsCopy = pixels.slice(); // Crée une copie des pixels
+  for (let x = 1; x &lt; width - 1; x++) &#123;
+    for (let y = 1; y &lt; height - 1; y++) &#123;
+      for (let k = 0; k &lt; 3; k++) &#123; // Pour chaque composante de couleur (rouge, vert, bleu)
+        let index = (x + y * width) * 4 + k;
+        pixels[index] = (
+          pixelsCopy[index] +
+          pixelsCopy[index - 4] +
+          pixelsCopy[index + 4] +
+          pixelsCopy[index - width * 4] +
+          pixelsCopy[index + width * 4]
+        ) / 5; // Moyenne des valeurs des pixels voisins
+      &#125;
+    &#125;
+  &#125;
+  updatePixels();
+&#125;</code></pre>
+                                <button
+                                    class="btn btn-primary mt-2"
+                                    (click)="
+                                        runSketch(sketch3Container, sketch3)
+                                    "
+                                >
+                                    <i class="bi bi-play-fill"></i> Run
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div
+                                class="sketch-container"
+                                #sketch3Container
+                                id="sketch3"
+                            ></div>
+                        </div>
+                    </div>
+                    <p>Explication :</p>
+                    <ul>
+                        <li>
+                            Dessin initial : Crée un motif en dessinant des
+                            rectangles colorés aléatoirement sur le canvas.
+                        </li>
+                        <li>
+                            Effet de flou : Applique un effet de flou en
+                            moyennant les valeurs des pixels voisins pour chaque
+                            composante de couleur.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        Exemple 3 : Conversion en niveaux de gris
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <h4>Exemple :</h4>
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="code-container">
+                                <pre><code class="language-javascript">function setup() &#123;
+  createCanvas(400, 400);
+  background(220);
+
+  // Dessin initial
+  noStroke();
+  for (let x = 0; x &lt; width; x += 40) &#123;
+    for (let y = 0; y &lt; height; y += 40) &#123;
+      fill(random(255), random(255), random(255));
+      rect(x, y, 40, 40);
+    &#125;
+  &#125;
+
+  // Conversion en niveaux de gris
+  loadPixels();
+  for (let i = 0; i &lt; pixels.length; i += 4) &#123;
+    let r = pixels[i];
+    let g = pixels[i + 1];
+    let b = pixels[i + 2];
+    let gray = (r + g + b) / 3; // Calcule la valeur de gris
+    pixels[i] = gray;
+    pixels[i + 1] = gray;
+    pixels[i + 2] = gray;
+  &#125;
+  updatePixels();
+&#125;</code></pre>
+                                <button
+                                    class="btn btn-primary mt-2"
+                                    (click)="
+                                        runSketch(sketch4Container, sketch4)
+                                    "
+                                >
+                                    <i class="bi bi-play-fill"></i> Run
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div
+                                class="sketch-container"
+                                #sketch4Container
+                                id="sketch4"
+                            ></div>
+                        </div>
+                    </div>
+                    <p>Explication :</p>
+                    <ul>
+                        <li>
+                            Dessin initial : Crée un motif en dessinant des
+                            rectangles colorés aléatoirement sur le canvas.
+                        </li>
+                        <li>
+                            Conversion en niveaux de gris : Calcule la valeur de
+                            gris en moyennant les composantes rouge, verte et
+                            bleue, puis applique cette valeur à chaque
+                            composante de couleur.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2 class="mt-5 text-success">5. Conclusion</h2>
+            <p>
+                Vous avez maintenant appris à manipuler les pixels en p5.js pour
+                créer des effets visuels intéressants. Expérimentez avec ces
+                concepts pour créer des œuvres d'art encore plus variées et
+                complexes.
+            </p>
+
+            <div class="d-flex justify-content-between mt-4">
+                <a class="btn btn-secondary" [routerLink]="['/tutos']">
+                    <i class="bi bi-arrow-left"></i> Retour
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

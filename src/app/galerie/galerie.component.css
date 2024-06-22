@@ -1,0 +1,72 @@
+.container {
+    margin-top: 100px; /* Ajustez cette valeur selon vos besoins */
+}
+
+p,
+ul {
+    text-align: justify;
+}
+h2,
+h3 {
+    margin-top: 2rem;
+}
+ul {
+    padding-left: 20px;
+}
+
+ul li {
+    margin-bottom: 10px;
+}
+
+.resource-item {
+    margin-bottom: 40px;
+}
+
+.resource-item img {
+    width: 100%;
+    height: auto;
+    max-width: 1200px;
+    display: block;
+    margin: 0 auto 20px;
+}
+
+.resource-item p {
+    margin: 0 0 10px;
+}
+
+.resource-item a {
+    display: block;
+    width: max-content;
+    margin: 0 auto;
+}
+pre code {
+    display: block;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    overflow: auto;
+}
+.card-title {
+    font-weight: bold;
+    color: #007bff;
+}
+.card-header {
+    background-color: #f1f1f1;
+}
+#sketchContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+p {
+    position: relative;
+    color: white;
+    text-align: center;
+    font-size: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+}

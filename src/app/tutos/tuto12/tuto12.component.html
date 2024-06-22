@@ -1,1 +1,286 @@
-<p>tuto12 works!</p>
+<div class="container my-5">
+    <div class="row">
+        <div class="col">
+            <h1 class="mb-4 text-primary">
+                <i class="bi bi-tree"></i> Tutoriel 12 : Génération d'Art
+                Fractal en p5.js
+            </h1>
+
+            <h2 class="mt-5 text-success">1. Introduction</h2>
+            <p>
+                Utiliser des algorithmes pour générer des formes fractales et
+                des motifs répétitifs complexes.
+            </p>
+
+            <h2 class="mt-5 text-success">
+                2. Configuration de l'environnement
+            </h2>
+            <ol>
+                <li>
+                    Utilisez le même fichier HTML que dans les tutoriels
+                    précédents pour configurer l'environnement :
+                </li>
+                <div class="code-container">
+                    <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;p5.js Tutorial&lt;/title&gt;
+  &lt;!-- Inclusion de la bibliothèque p5.js --&gt;
+  &lt;script src="p5.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;!-- Inclusion du fichier JavaScript contenant notre code p5.js --&gt;
+  &lt;script src="sketch.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </div>
+                <p>Explication :</p>
+                <ul>
+                    <li>
+                        Ce code crée une structure de base pour une page web
+                        avec un fichier HTML.
+                    </li>
+                    <li>
+                        La balise
+                        <code
+                            >&lt;script src="p5.min.js"&gt;&lt;/script&gt;</code
+                        >
+                        inclut la bibliothèque p5.js dans notre projet.
+                    </li>
+                    <li>
+                        Le fichier <code>sketch.js</code> contiendra notre code
+                        p5.js.
+                    </li>
+                </ul>
+            </ol>
+
+            <h2 class="mt-5 text-success">
+                3. Mise en place du canvas et des paramètres
+            </h2>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        a) Initialisation de la taille du canvas
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <h4>Exemple :</h4>
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="code-container">
+                                <pre><code class="language-javascript">function setup() &#123;
+  createCanvas(400, 400); // Crée un canvas de 400x400 pixels
+  background(220); // Remplit le fond avec une couleur gris clair
+&#125;</code></pre>
+                                <button
+                                    class="btn btn-primary mt-2"
+                                    (click)="
+                                        runSketch(sketch1Container, sketch1)
+                                    "
+                                >
+                                    <i class="bi bi-play-fill"></i> Run
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div
+                                class="sketch-container"
+                                #sketch1Container
+                                id="sketch1"
+                            ></div>
+                        </div>
+                    </div>
+                    <p>Explication :</p>
+                    <ul>
+                        <li>
+                            <code>createCanvas(400, 400)</code> : Crée un canvas
+                            de 400x400 pixels.
+                        </li>
+                        <li>
+                            <code>background(220)</code> : Remplit le fond du
+                            canvas avec une couleur gris clair.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2 class="mt-5 text-success">4. Génération de fractals</h2>
+            <p>
+                Nous allons explorer plusieurs exemples de fractals pour
+                comprendre les concepts et les implémenter en p5.js.
+            </p>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3 class="card-title">Exemple 1 : Arbre de Pythagore</h3>
+                </div>
+                <div class="card-body">
+                    <h4>Exemple :</h4>
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="code-container">
+                                <pre><code class="language-javascript">function setup() &#123;
+  createCanvas(400, 400);
+  background(220);
+  stroke(0);
+  translate(width / 2, height); // Déplace l'origine au bas du canvas
+  drawBranch(100); // Dessine la première branche de longueur 100
+&#125;
+
+function drawBranch(len) &#123;
+  line(0, 0, 0, -len); // Dessine une ligne de la position actuelle vers le haut
+  translate(0, -len); // Déplace l'origine à la fin de la ligne
+  if (len > 4) &#123; // Condition de fin de récursion
+    push(); // Sauvegarde l'état actuel de la transformation
+    rotate(PI / 4); // Tourne de 45 degrés vers la droite
+    drawBranch(len * 0.67); // Dessine la branche droite plus petite
+    pop(); // Restaure l'état de la transformation
+    push(); // Sauvegarde l'état actuel de la transformation
+    rotate(-PI / 4); // Tourne de 45 degrés vers la gauche
+    drawBranch(len * 0.67); // Dessine la branche gauche plus petite
+    pop(); // Restaure l'état de la transformation
+  &#125;
+&#125;</code></pre>
+                                <button
+                                    class="btn btn-primary mt-2"
+                                    (click)="
+                                        runSketch(sketch2Container, sketch2)
+                                    "
+                                >
+                                    <i class="bi bi-play-fill"></i> Run
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div
+                                class="sketch-container"
+                                #sketch2Container
+                                id="sketch2"
+                            ></div>
+                        </div>
+                    </div>
+                    <p>Explication :</p>
+                    <ul>
+                        <li>
+                            <code>translate(width / 2, height)</code> : Déplace
+                            l'origine du dessin au bas du canvas pour que
+                            l'arbre grandisse vers le haut.
+                        </li>
+                        <li>
+                            <code>drawBranch(len)</code> : Fonction récursive
+                            qui dessine une branche de longueur
+                            <code>len</code>. Si la longueur est supérieure à 4
+                            pixels, la fonction se rappelle elle-même pour
+                            dessiner deux branches supplémentaires plus petites
+                            (2/3 de la taille de la branche actuelle) à partir
+                            de l'extrémité de la branche actuelle.
+                        </li>
+                        <li>
+                            <code>push()</code> et <code>pop()</code> :
+                            Sauvegardent et restaurent l'état actuel de la
+                            transformation (position et rotation), permettant de
+                            dessiner des branches sans affecter les autres.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3 class="card-title">Exemple 2 : Flocon de Koch</h3>
+                </div>
+                <div class="card-body">
+                    <h4>Exemple :</h4>
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="code-container">
+                                <pre><code class="language-javascript">function setup() &#123;
+  createCanvas(400, 400);
+  background(220);
+  stroke(0);
+  let len = 300;
+  let startX = width / 2 - len / 2;
+  let startY = height / 2 + len / 2;
+  drawKoch(startX, startY, len, 0, 4);
+&#125;
+
+function drawKoch(x, y, len, angle, depth) &#123;
+  if (depth == 0) &#123;
+    let x1 = x + len * cos(angle);
+    let y1 = y + len * sin(angle);
+    line(x, y, x1, y1);
+  &#125; else &#123;
+    len /= 3.0;
+    drawKoch(x, y, len, angle, depth - 1);
+    x += len * cos(angle);
+    y += len * sin(angle);
+
+    drawKoch(x, y, len, angle - PI / 3, depth - 1);
+    x += len * cos(angle - PI / 3);
+    y += len * sin(angle - PI / 3);
+
+    drawKoch(x, y, len, angle + PI / 3, depth - 1);
+    x += len * cos(angle + PI / 3);
+    y += len * sin(angle + PI / 3);
+
+    drawKoch(x, y, len, angle, depth - 1);
+  &#125;
+&#125;</code></pre>
+                                <button
+                                    class="btn btn-primary mt-2"
+                                    (click)="
+                                        runSketch(sketch3Container, sketch3)
+                                    "
+                                >
+                                    <i class="bi bi-play-fill"></i> Run
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div
+                                class="sketch-container"
+                                #sketch3Container
+                                id="sketch3"
+                            ></div>
+                        </div>
+                    </div>
+                    <p>Explication :</p>
+                    <ul>
+                        <li>
+                            <code>drawKoch(x, y, len, angle, depth)</code> :
+                            Fonction récursive qui dessine une courbe de Koch.
+                            Si la profondeur est zéro, une ligne droite est
+                            dessinée. Sinon, la fonction divise la longueur par
+                            trois et appelle récursivement elle-même pour
+                            dessiner quatre segments de courbe de Koch avec une
+                            profondeur réduite. Chaque segment est dessiné avec
+                            un angle différent pour créer les "dents"
+                            caractéristiques de la courbe de Koch.
+                        </li>
+                        <li>
+                            <code>cos(angle)</code> et <code>sin(angle)</code> :
+                            Calculent les coordonnées <code>x</code> et
+                            <code>y</code> des points en fonction de l'angle et
+                            de la longueur.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2 class="mt-5 text-success">5. Conclusion</h2>
+            <p>
+                Vous avez maintenant appris à générer des motifs fractals en
+                p5.js. Expérimentez avec ces concepts pour créer des œuvres
+                d'art fractales encore plus variées et complexes.
+            </p>
+
+            <div class="d-flex justify-content-between mt-4">
+                <a class="btn btn-secondary" [routerLink]="['/tutos']">
+                    <i class="bi bi-arrow-left"></i> Retour
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

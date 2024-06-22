@@ -1,1 +1,384 @@
-<p>tuto7 works!</p>
+<div class="container my-5">
+    <div class="row">
+        <div class="col">
+            <h1 class="mb-4 text-primary">
+                <i class="bi bi-grid"></i> Tutoriel sur la Génération de Motifs
+                Complexes en p5.js
+            </h1>
+
+            <h2 class="mt-5 text-success">1. Introduction</h2>
+            <p>
+                Dans ce tutoriel, nous allons explorer comment générer des
+                motifs complexes en utilisant des formes simples et des
+                techniques de répétition en p5.js. Les motifs peuvent être créés
+                en combinant des formes de base et en appliquant des
+                transformations comme la translation, la rotation et l'échelle.
+            </p>
+
+            <h2 class="mt-5 text-success">
+                2. Configuration de l'environnement
+            </h2>
+            <ol>
+                <li>
+                    Utilisez le même fichier HTML que dans les tutoriels
+                    précédents pour configurer l'environnement :
+                </li>
+                <div class="code-container">
+                    <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;p5.js Tutorial&lt;/title&gt;
+  &lt;!-- Inclusion de la bibliothèque p5.js --&gt;
+  &lt;script src="p5.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;!-- Inclusion du fichier JavaScript contenant notre code p5.js --&gt;
+  &lt;script src="sketch.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </div>
+                <p>Explication :</p>
+                <ul>
+                    <li>
+                        Ce code crée une structure de base pour une page web
+                        avec un fichier HTML.
+                    </li>
+                    <li>
+                        La balise
+                        <code
+                            >&lt;script src="p5.min.js"&gt;&lt;/script&gt;</code
+                        >
+                        inclut la bibliothèque p5.js dans notre projet.
+                    </li>
+                    <li>
+                        Le fichier <code>sketch.js</code> contiendra notre code
+                        p5.js.
+                    </li>
+                </ul>
+            </ol>
+
+            <h2 class="mt-5 text-success">3. Création d'un canvas</h2>
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3 class="card-title">Création d'un canvas</h3>
+                </div>
+                <div class="card-body">
+                    <h4>Exemple :</h4>
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="code-container">
+                                <pre><code class="language-javascript">function setup() &#123;
+  createCanvas(400, 400);
+  background(220); // Gris clair
+&#125;
+
+function draw() &#123;
+  // Ici nous allons générer des motifs complexes
+&#125;</code></pre>
+                                <button
+                                    class="btn btn-primary mt-2"
+                                    (click)="
+                                        runSketch(sketch1Container, sketch1)
+                                    "
+                                >
+                                    <i class="bi bi-play-fill"></i> Run
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div
+                                class="sketch-container"
+                                #sketch1Container
+                                id="sketch1"
+                            ></div>
+                        </div>
+                    </div>
+                    <p>
+                        Explication : Ce code crée un canvas de 400x400 pixels
+                        et remplit le fond avec une couleur grise.
+                    </p>
+                </div>
+            </div>
+
+            <h2 class="mt-5 text-success">4. Génération de motifs complexes</h2>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3 class="card-title">Exemple 1 : Grille de cercles</h3>
+                </div>
+                <div class="card-body">
+                    <h4>Exemple :</h4>
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="code-container">
+                                <pre><code class="language-javascript">function setup() &#123;
+  createCanvas(400, 400);
+  background(220); // Gris clair
+  let spacing = 40; // Espacement entre les cercles
+
+  for (let x = spacing / 2; x &lt; width; x += spacing) &#123;
+    for (let y = spacing / 2; y &lt; height; y += spacing) &#123;
+      ellipse(x, y, 30, 30); // Dessine un cercle
+    &#125;
+  &#125;
+&#125;</code></pre>
+                                <button
+                                    class="btn btn-primary mt-2"
+                                    (click)="
+                                        runSketch(sketch2Container, sketch2)
+                                    "
+                                >
+                                    <i class="bi bi-play-fill"></i> Run
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div
+                                class="sketch-container"
+                                #sketch2Container
+                                id="sketch2"
+                            ></div>
+                        </div>
+                    </div>
+                    <p>Explication :</p>
+                    <ul>
+                        <li>
+                            Nous utilisons deux boucles
+                            <code>for</code> imbriquées pour parcourir les
+                            positions <code>x</code> et <code>y</code> du
+                            canvas.
+                        </li>
+                        <li>
+                            La fonction
+                            <code>ellipse(x, y, 30, 30)</code> dessine un cercle
+                            à chaque position <code>(x, y)</code> avec un
+                            diamètre de 30 pixels.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        Exemple 2 : Grille de cercles avec rotation (Révisé)
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <h4>Exemple :</h4>
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="code-container">
+                                <pre><code class="language-javascript">function setup() &#123;
+  createCanvas(400, 400);
+  background(220); // Gris clair
+  let spacing = 60; // Espacement entre les cercles
+
+  for (let x = spacing / 2; x &lt; width; x += spacing) &#123;
+    for (let y = spacing / 2; y &lt; height; y += spacing) &#123;
+      push(); // Sauvegarde le contexte de dessin
+      translate(x, y); // Déplace l'origine au centre du cercle
+      let angle = atan2(y - height / 2, x - width / 2); // Calcule l'angle de rotation basé sur la position
+      rotate(angle); // Applique une rotation
+      ellipse(0, 0, 40, 20); // Dessine un ellipse allongée pour rendre l'effet plus visible
+      pop(); // Restaure le contexte de dessin
+    &#125;
+  &#125;
+&#125;</code></pre>
+                                <button
+                                    class="btn btn-primary mt-2"
+                                    (click)="
+                                        runSketch(sketch3Container, sketch3)
+                                    "
+                                >
+                                    <i class="bi bi-play-fill"></i> Run
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div
+                                class="sketch-container"
+                                #sketch3Container
+                                id="sketch3"
+                            ></div>
+                        </div>
+                    </div>
+                    <p>Explication :</p>
+                    <ul>
+                        <li>
+                            Nous utilisons <code>push()</code> et
+                            <code>pop()</code> pour sauvegarder et restaurer le
+                            contexte de dessin afin que les transformations
+                            n'affectent pas les autres formes.
+                        </li>
+                        <li>
+                            La fonction <code>translate(x, y)</code> déplace
+                            l'origine au centre du cercle.
+                        </li>
+                        <li>
+                            La fonction <code>atan2(y, x)</code> calcule l'angle
+                            de rotation basé sur la position
+                            <code>(y, x)</code>.
+                        </li>
+                        <li>
+                            La fonction <code>rotate(angle)</code> applique une
+                            rotation en fonction de cet angle.
+                        </li>
+                        <li>
+                            La fonction
+                            <code>ellipse(0, 0, 40, 20)</code> dessine une
+                            ellipse allongée pour rendre l'effet de rotation
+                            plus visible.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        Exemple 3 : Motif radial de rectangles
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <h4>Exemple :</h4>
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="code-container">
+                                <pre><code class="language-javascript">function setup() &#123;
+  createCanvas(400, 400);
+  background(220); // Gris clair
+  translate(width / 2, height / 2); // Déplace l'origine au centre du canvas
+
+  let numRects = 20; // Nombre de rectangles
+  let angleStep = TWO_PI / numRects; // Angle entre chaque rectangle
+
+  for (let i = 0; i &lt; numRects; i++) &#123;
+    push(); // Sauvegarde le contexte de dessin
+    rotate(i * angleStep); // Applique une rotation
+    rect(0, 0, 150, 10); // Dessine un rectangle
+    pop(); // Restaure le contexte de dessin
+  &#125;
+&#125;</code></pre>
+                                <button
+                                    class="btn btn-primary mt-2"
+                                    (click)="
+                                        runSketch(sketch4Container, sketch4)
+                                    "
+                                >
+                                    <i class="bi bi-play-fill"></i> Run
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div
+                                class="sketch-container"
+                                #sketch4Container
+                                id="sketch4"
+                            ></div>
+                        </div>
+                    </div>
+                    <p>Explication :</p>
+                    <ul>
+                        <li>
+                            Nous utilisons
+                            <code>translate(width / 2, height / 2)</code> pour
+                            déplacer l'origine au centre du canvas.
+                        </li>
+                        <li>
+                            Nous définissons <code>numRects</code> pour le
+                            nombre de rectangles et <code>angleStep</code> pour
+                            l'angle entre chaque rectangle.
+                        </li>
+                        <li>
+                            La boucle <code>for</code> parcourt chaque angle,
+                            applique une rotation et dessine un rectangle.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        Exemple 4 : Motif de cercles concentriques (Révisé)
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <h4>Exemple :</h4>
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="code-container">
+                                <pre><code class="language-javascript">function setup() &#123;
+  createCanvas(400, 400);
+  background(220); // Gris clair
+  translate(width / 2, height / 2); // Déplace l'origine au centre du canvas
+
+  let numCircles = 10; // Nombre de cercles
+  let maxRadius = 150; // Rayon maximum
+
+  for (let i = numCircles - 1; i &gt;= 0; i--) &#123; // Commence par le plus grand cercle
+    let radius = (i / numCircles) * maxRadius;
+    if (i % 2 == 0) &#123;
+      fill(255); // Blanc
+    &#125; else &#123;
+      fill(0); // Noir
+    &#125;
+    ellipse(0, 0, radius * 2, radius * 2); // Dessine un cercle concentrique
+  &#125;
+&#125;</code></pre>
+                                <button
+                                    class="btn btn-primary mt-2"
+                                    (click)="
+                                        runSketch(sketch5Container, sketch5)
+                                    "
+                                >
+                                    <i class="bi bi-play-fill"></i> Run
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div
+                                class="sketch-container"
+                                #sketch5Container
+                                id="sketch5"
+                            ></div>
+                        </div>
+                    </div>
+                    <p>Explication :</p>
+                    <ul>
+                        <li>
+                            La boucle <code>for</code> commence par le plus
+                            grand cercle <code>(numCircles - 1)</code> et
+                            descend jusqu'au plus petit <code>(0)</code>.
+                        </li>
+                        <li>
+                            Cela garantit que les cercles plus petits sont
+                            dessinés par-dessus les plus grands, ce qui permet
+                            de voir chaque cercle.
+                        </li>
+                        <li>
+                            Nous alternons les couleurs entre noir et blanc pour
+                            un meilleur effet visuel.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2 class="mt-5 text-success">5. Conclusion</h2>
+            <p>
+                Vous avez maintenant appris à générer des motifs complexes en
+                utilisant des formes simples et des transformations en p5.js.
+                Expérimentez avec ces concepts pour créer vos propres motifs
+                uniques et intéressants.
+            </p>
+
+            <div class="d-flex justify-content-between mt-4">
+                <a class="btn btn-secondary" [routerLink]="['/tutos']">
+                    <i class="bi bi-arrow-left"></i> Retour
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

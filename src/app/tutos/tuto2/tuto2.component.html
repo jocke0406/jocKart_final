@@ -1,1 +1,294 @@
-<p>tuto2 works!</p>
+<div class="container my-5">
+    <div class="row">
+        <div class="col">
+            <h1 class="mb-4 text-primary">
+                <i class="bi bi-brush"></i> Tutoriel sur les Boucles en p5.js
+            </h1>
+
+            <h2 class="mt-5 text-success">1. Introduction</h2>
+            <p>
+                Dans ce tutoriel, nous allons explorer l'utilisation des boucles
+                en p5.js pour générer des motifs répétitifs. Les boucles sont
+                des structures de contrôle qui permettent de répéter un bloc de
+                code plusieurs fois. Nous utiliserons principalement les boucles
+                for pour créer des motifs intéressants.
+            </p>
+
+            <h2 class="mt-5 text-success">
+                2. Configuration de l'environnement
+            </h2>
+            <ol>
+                <li>
+                    Utilisez le même fichier HTML que dans le tutoriel précédent
+                    pour configurer l'environnement :
+                </li>
+                <div class="code-container">
+                    <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;p5.js Tutorial&lt;/title&gt;
+  &lt;!-- Inclusion de la bibliothèque p5.js --&gt;
+  &lt;script src="p5.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;!-- Inclusion du fichier JavaScript contenant notre code p5.js --&gt;
+  &lt;script src="sketch.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </div>
+                <p>Explication :</p>
+                <ul>
+                    <li>
+                        Ce code crée une structure de base pour une page web
+                        avec un fichier HTML.
+                    </li>
+                    <li>
+                        La balise
+                        <code
+                            >&lt;script src="p5.min.js"&gt;&lt;/script&gt;</code
+                        >
+                        inclut la bibliothèque p5.js dans notre projet.
+                    </li>
+                    <li>
+                        Le fichier <code>sketch.js</code> contiendra notre code
+                        p5.js.
+                    </li>
+                </ul>
+            </ol>
+
+            <h2 class="mt-5 text-success">3. Création d'un canvas</h2>
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3 class="card-title">Création d'un canvas</h3>
+                </div>
+                <div class="card-body">
+                    <h4>Exemple :</h4>
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="code-container">
+                                <pre><code class="language-javascript">function setup() &#123;
+  createCanvas(400, 400);
+  background(200);
+&#125;
+
+function draw() &#123;
+  // Ici nous allons dessiner des formes répétitives
+&#125;</code></pre>
+                                <button
+                                    class="btn btn-primary mt-2"
+                                    (click)="
+                                        runSketch(sketch1Container, sketch1)
+                                    "
+                                >
+                                    <i class="bi bi-play-fill"></i> Run
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div
+                                class="sketch-container"
+                                #sketch1Container
+                                id="sketch1"
+                            ></div>
+                        </div>
+                    </div>
+                    <p>
+                        Explication : Ce code crée un canvas de 400x400 pixels
+                        et remplit le fond avec une couleur grise.
+                    </p>
+                </div>
+            </div>
+
+            <h2 class="mt-5 text-success">4. Utilisation des boucles for</h2>
+            <p>
+                La boucle for est idéale pour répéter des actions un certain
+                nombre de fois. Voici la syntaxe générale d'une boucle for :
+            </p>
+            <div class="code-container">
+                <pre><code class="language-javascript">for (initialisation; condition; incrément) &#123;
+  // Code à répéter
+&#125;</code></pre>
+            </div>
+            <p>Explication :</p>
+            <ul>
+                <li>
+                    <strong>Initialisation :</strong> Déclare et initialise une
+                    variable de contrôle de boucle.
+                </li>
+                <li>
+                    <strong>Condition :</strong> Condition qui doit être vraie
+                    pour que la boucle continue de s'exécuter.
+                </li>
+                <li>
+                    <strong>Incrément :</strong> Mise à jour de la variable de
+                    contrôle à chaque itération.
+                </li>
+            </ul>
+
+            <h2 class="mt-5 text-success">5. Dessin de motifs répétitifs</h2>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3 class="card-title">Exemple 1 : Grille de cercles</h3>
+                </div>
+                <div class="card-body">
+                    <h4>Exemple :</h4>
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="code-container">
+                                <pre><code class="language-javascript">function setup() &#123;
+  createCanvas(400, 400);
+  background(200);
+
+  let spacing = 40; // Espacement entre les cercles
+
+  for (let x = spacing / 2; x < width; x += spacing) &#123;
+    for (let y = spacing / 2; y < height; y += spacing) &#123;
+      ellipse(x, y, 30, 30); // Dessine un cercle
+    &#125;
+  &#125;
+&#125;</code></pre>
+                                <button
+                                    class="btn btn-primary mt-2"
+                                    (click)="
+                                        runSketch(sketch2Container, sketch2)
+                                    "
+                                >
+                                    <i class="bi bi-play-fill"></i> Run
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div
+                                class="sketch-container"
+                                #sketch2Container
+                                id="sketch2"
+                            ></div>
+                        </div>
+                    </div>
+                    <p>Explication :</p>
+                    <ul>
+                        <li>
+                            Nous avons défini un espacement (spacing) de 40
+                            pixels.
+                        </li>
+                        <li>
+                            La première boucle for parcourt les positions x du
+                            canvas, de
+                            <code>spacing / 2</code> jusqu'à la largeur du
+                            canvas (<code>width</code>), en augmentant de
+                            <code>spacing</code> à chaque itération.
+                        </li>
+                        <li>
+                            La deuxième boucle for parcourt les positions y du
+                            canvas, de
+                            <code>spacing / 2</code> jusqu'à la hauteur du
+                            canvas (<code>height</code>), en augmentant de
+                            <code>spacing</code> à chaque itération.
+                        </li>
+                        <li>
+                            La fonction
+                            <code>ellipse(x, y, 30, 30)</code> dessine un cercle
+                            à chaque position <code>(x, y)</code> avec un
+                            diamètre de 30 pixels.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        Exemple 2 : Grille de rectangles avec des couleurs
+                        alternées
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <h4>Exemple :</h4>
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="code-container">
+                                <pre><code class="language-javascript">function setup() &#123;
+  createCanvas(400, 400);
+  let spacing = 40; // Espacement entre les rectangles
+
+  for (let x = 0; x < width; x += spacing) &#123;
+    for (let y = 0; y < height; y += spacing) &#123;
+      if ((x + y) % 80 === 0) &#123;
+        fill(255, 0, 0); // Rouge
+      &#125; else &#123;
+        fill(0, 0, 255); // Bleu
+      &#125;
+      rect(x, y, spacing, spacing); // Dessine un rectangle
+    &#125;
+  &#125;
+&#125;</code></pre>
+                                <button
+                                    class="btn btn-primary mt-2"
+                                    (click)="
+                                        runSketch(sketch3Container, sketch3)
+                                    "
+                                >
+                                    <i class="bi bi-play-fill"></i> Run
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div
+                                class="sketch-container"
+                                #sketch3Container
+                                id="sketch3"
+                            ></div>
+                        </div>
+                    </div>
+                    <p>Explication :</p>
+                    <ul>
+                        <li>
+                            Nous avons défini un espacement (spacing) de 40
+                            pixels.
+                        </li>
+                        <li>
+                            La première boucle for parcourt les positions x du
+                            canvas, de 0 jusqu'à la largeur du canvas
+                            (<code>width</code>), en augmentant de
+                            <code>spacing</code> à chaque itération.
+                        </li>
+                        <li>
+                            La deuxième boucle for parcourt les positions y du
+                            canvas, de 0 jusqu'à la hauteur du canvas
+                            (<code>height</code>), en augmentant de
+                            <code>spacing</code> à chaque itération.
+                        </li>
+                        <li>
+                            La condition
+                            <code>if ((x + y) % 80 === 0)</code> permet
+                            d'alterner les couleurs entre rouge et bleu.
+                        </li>
+                        <li>
+                            La fonction
+                            <code>rect(x, y, spacing, spacing)</code> dessine un
+                            rectangle à chaque position <code>(x, y)</code> avec
+                            une taille de <code>spacing</code> pixels.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2 class="mt-5 text-success">6. Conclusion</h2>
+            <p>
+                Les boucles for sont un outil puissant pour générer des motifs
+                répétitifs en p5.js. En expérimentant avec différents
+                espacements, formes et couleurs, vous pouvez créer des motifs
+                variés et intéressants. Essayez de modifier les exemples
+                ci-dessus pour créer vos propres motifs uniques.
+            </p>
+
+            <div class="d-flex justify-content-between mt-4">
+                <a class="btn btn-secondary" [routerLink]="['/tutos']">
+                    <i class="bi bi-arrow-left"></i> Retour
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

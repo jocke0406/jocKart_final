@@ -1,1 +1,329 @@
-<p>tuto1 works!</p>
+<div class="container my-5">
+    <div class="row">
+        <div class="col">
+            <h1 class="mb-4 text-primary">
+                <i class="bi bi-brush"></i> Tutoriel d'Introduction à p5.js
+            </h1>
+
+            <h2 class="mt-5 text-success">1. Introduction</h2>
+            <p>
+                Bienvenue dans ce tutoriel d'introduction à p5.js ! Nous allons
+                apprendre à configurer un environnement p5.js et créer notre
+                premier sketch en utilisant les formes de base. p5.js est une
+                bibliothèque JavaScript qui facilite le dessin et l'animation
+                sur le web. Elle est idéale pour les débutants en programmation
+                créative.
+            </p>
+
+            <h2 class="mt-5 text-success">
+                2. Configuration de l'environnement
+            </h2>
+            <ol>
+                <li>
+                    Rendez-vous sur le site officiel de p5.js :
+                    <a href="https://p5js.org" target="_blank">p5js.org</a>.
+                </li>
+                <li>
+                    Téléchargez la bibliothèque p5.js en cliquant sur
+                    "Download".
+                </li>
+                <li>
+                    Décompressez le fichier téléchargé et ouvrez le dossier.
+                </li>
+                <li>
+                    Créez un nouveau fichier HTML et ajoutez le code suivant
+                    pour inclure p5.js :
+                </li>
+                <div class="code-container">
+                    <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;p5.js Tutorial&lt;/title&gt;
+  &lt;script src="p5.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;script src="sketch.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </div>
+                <p>Explication :</p>
+                <ul>
+                    <li>
+                        Ce code crée une structure de base pour une page web
+                        avec un fichier HTML.
+                    </li>
+                    <li>
+                        La balise
+                        <code
+                            >&lt;script src="p5.min.js"&gt;&lt;/script&gt;</code
+                        >
+                        inclut la bibliothèque p5.js dans notre projet.
+                    </li>
+                    <li>
+                        Le fichier <code>sketch.js</code> contiendra notre code
+                        p5.js.
+                    </li>
+                </ul>
+                <li>
+                    Créez un fichier sketch.js dans le même dossier et ajoutez-y
+                    le code suivant :
+                </li>
+                <div class="code-container">
+                    <pre><code class="language-javascript">function setup() &#123;
+  createCanvas(400, 400);
+  background(200);
+&#125;
+
+function draw() &#123;
+  // Ici nous allons dessiner des formes de base
+&#125;</code></pre>
+                </div>
+                <p>Explication :</p>
+                <ul>
+                    <li>
+                        La fonction <code>setup() &#123;&#125;</code> est
+                        appelée une seule fois au début du programme. Elle est
+                        utilisée pour définir les propriétés initiales.
+                    </li>
+                    <li>
+                        La fonction <code>createCanvas(400, 400)</code> crée une
+                        zone de dessin de 400 pixels de large et 400 pixels de
+                        haut.
+                    </li>
+                    <li>
+                        La fonction <code>background(200)</code> remplit le fond
+                        de la zone de dessin avec une couleur grise (valeur
+                        entre 0 et 255).
+                    </li>
+                    <li>
+                        La fonction <code>draw() &#123;&#125;</code> est appelée
+                        en boucle après <code>setup()</code>. C'est ici que nous
+                        dessinerons nos formes.
+                    </li>
+                </ul>
+            </ol>
+
+            <h2 class="mt-5 text-success">3. Création d'un canvas</h2>
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3 class="card-title">Création d'un canvas</h3>
+                </div>
+                <div class="card-body">
+                    <h4>Exemple :</h4>
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="code-container">
+                                <pre><code class="language-javascript">function setup() &#123;
+  createCanvas(400, 400); // Crée un canvas de 400x400 pixels
+  background(200); // Remplit le fond avec une couleur grise
+&#125;</code></pre>
+                                <button
+                                    class="btn btn-primary mt-2"
+                                    (click)="
+                                        runSketch(sketch1Container, sketch1)
+                                    "
+                                >
+                                    <i class="bi bi-play-fill"></i> Run
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div
+                                class="sketch-container"
+                                #sketch1Container
+                                id="sketch1"
+                            ></div>
+                        </div>
+                    </div>
+                    <p>
+                        Explication : Ce code crée un canvas de 400x400 pixels
+                        et remplit le fond avec une couleur grise.
+                    </p>
+                </div>
+            </div>
+
+            <h2 class="mt-5 text-success">4. Dessin de formes de base</h2>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3 class="card-title">Rectangle</h3>
+                </div>
+                <div class="card-body">
+                    <h4>Exemple :</h4>
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="code-container">
+                                <pre><code class="language-javascript">function draw() &#123;
+  rect(50, 50, 150, 100); // Dessine un rectangle à la position (50,50) avec une largeur de 150 et une hauteur de 100
+&#125;</code></pre>
+                                <button
+                                    class="btn btn-primary mt-2"
+                                    (click)="
+                                        runSketch(sketch2Container, sketch2)
+                                    "
+                                >
+                                    <i class="bi bi-play-fill"></i> Run
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div
+                                class="sketch-container"
+                                #sketch2Container
+                                id="sketch2"
+                            ></div>
+                        </div>
+                    </div>
+                    <p>
+                        Explication : La fonction
+                        <code>rect(x, y, width, height)</code> dessine un
+                        rectangle aux coordonnées <code>(x, y)</code> avec la
+                        largeur <code>width</code> et la hauteur
+                        <code>height</code>.
+                    </p>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3 class="card-title">Ellipse</h3>
+                </div>
+                <div class="card-body">
+                    <h4>Exemple :</h4>
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="code-container">
+                                <pre><code class="language-javascript">function draw() &#123;
+  ellipse(200, 200, 100, 100); // Dessine un cercle à la position (200,200) avec un diamètre de 100
+&#125;</code></pre>
+                                <button
+                                    class="btn btn-primary mt-2"
+                                    (click)="
+                                        runSketch(sketch3Container, sketch3)
+                                    "
+                                >
+                                    <i class="bi bi-play-fill"></i> Run
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div
+                                class="sketch-container"
+                                #sketch3Container
+                                id="sketch3"
+                            ></div>
+                        </div>
+                    </div>
+                    <p>
+                        Explication : La fonction
+                        <code>ellipse(x, y, width, height)</code> dessine une
+                        ellipse (ou un cercle si la largeur et la hauteur sont
+                        égales) aux coordonnées <code>(x, y)</code> avec la
+                        largeur <code>width</code> et la hauteur
+                        <code>height</code>.
+                    </p>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3 class="card-title">Ligne</h3>
+                </div>
+                <div class="card-body">
+                    <h4>Exemple :</h4>
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="code-container">
+                                <pre><code class="language-javascript">function draw() &#123;
+  line(300, 50, 350, 150); // Dessine une ligne entre les points (300,50) et (350,150)
+&#125;</code></pre>
+                                <button
+                                    class="btn btn-primary mt-2"
+                                    (click)="
+                                        runSketch(sketch4Container, sketch4)
+                                    "
+                                >
+                                    <i class="bi bi-play-fill"></i> Run
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div
+                                class="sketch-container"
+                                #sketch4Container
+                                id="sketch4"
+                            ></div>
+                        </div>
+                    </div>
+                    <p>
+                        Explication : La fonction
+                        <code>line(x1, y1, x2, y2)</code> dessine une ligne
+                        entre les points <code>(x1, y1)</code> et
+                        <code>(x2, y2)</code>.
+                    </p>
+                </div>
+            </div>
+
+            <h2 class="mt-5 text-success">5. Utilisation des couleurs</h2>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3 class="card-title">Transparence</h3>
+                </div>
+                <div class="card-body">
+                    <h4>Exemple :</h4>
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="code-container">
+                                <pre><code class="language-javascript">function draw() &#123;
+  fill(0, 255, 0, 127); // Définit la couleur de remplissage à vert avec une transparence de 50%
+  ellipse(200, 200, 100, 100); // Dessine un cercle vert semi-transparent
+&#125;</code></pre>
+                                <button
+                                    class="btn btn-primary mt-2"
+                                    (click)="
+                                        runSketch(sketch5Container, sketch5)
+                                    "
+                                >
+                                    <i class="bi bi-play-fill"></i> Run
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div
+                                class="sketch-container"
+                                #sketch5Container
+                                id="sketch5"
+                            ></div>
+                        </div>
+                    </div>
+                    <p>
+                        Explication : La fonction
+                        <code>fill(r, g, b, a)</code> définit la couleur de
+                        remplissage des formes, où <code>r</code>,
+                        <code>g</code>, <code>b</code> sont les valeurs de
+                        couleur (rouge, vert, bleu) et <code>a</code> est la
+                        transparence.
+                    </p>
+                </div>
+            </div>
+
+            <h2 class="mt-5 text-success">6. Conclusion</h2>
+            <p>
+                Vous avez maintenant une bonne introduction à p5.js. Vous savez
+                comment configurer votre environnement, créer un canvas et
+                dessiner des formes de base avec des couleurs. Expérimentez avec
+                ces concepts pour vous familiariser davantage avec p5.js. Dans
+                les prochains tutoriels, nous approfondirons ces concepts et
+                explorerons des techniques plus avancées.
+            </p>
+
+            <div class="d-flex justify-content-between mt-4">
+                <a class="btn btn-secondary" [routerLink]="['/tutos']">
+                    <i class="bi bi-arrow-left"></i> Retour
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

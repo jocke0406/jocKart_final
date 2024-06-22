@@ -1,0 +1,12 @@
+p,
+ul {
+    text-align: justify;
+}
+
+ul {
+    padding-left: 20px;
+}
+
+ul li {
+    margin-bottom: 10px;
+}

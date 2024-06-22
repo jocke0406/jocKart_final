@@ -1,0 +1,21 @@
+.navbar {
+    margin-bottom: 20px;
+    background-color: #222; /* Couleur de fond de la navbar */
+}
+
+.navbar-brand {
+    color: #f8f9fa; /* Couleur du texte de la marque */
+}
+
+.navbar-brand:hover {
+    color: #ffdd57; /* Couleur du texte de la marque au survol */
+}
+
+.navbar-nav .nav-link {
+    color: #f8f9fa; /* Couleur du texte des liens */
+    transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #ffdd57; /* Couleur du texte des liens au survol */
+}

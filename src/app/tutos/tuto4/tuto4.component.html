@@ -1,1 +1,316 @@
-<p>tuto4 works!</p>
+<div class="container my-5">
+    <div class="row">
+        <div class="col">
+            <h1 class="mb-4 text-primary">
+                <i class="bi bi-brush"></i> Tutoriel sur les Principes de Base
+                de l'Art Génératif en p5.js
+            </h1>
+
+            <h2 class="mt-5 text-success">1. Introduction</h2>
+            <p>
+                Dans ce tutoriel, nous allons explorer les principes de base de
+                l'art génératif en utilisant p5.js. L'art génératif utilise des
+                algorithmes pour créer des œuvres d'art. En utilisant des
+                techniques de programmation, nous pouvons générer des motifs et
+                des formes complexes qui seraient difficiles à réaliser
+                manuellement.
+            </p>
+
+            <h2 class="mt-5 text-success">
+                2. Configuration de l'environnement
+            </h2>
+            <ol>
+                <li>
+                    Utilisez le même fichier HTML que dans les tutoriels
+                    précédents pour configurer l'environnement :
+                </li>
+                <div class="code-container">
+                    <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;p5.js Tutorial&lt;/title&gt;
+  &lt;!-- Inclusion de la bibliothèque p5.js --&gt;
+  &lt;script src="p5.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;!-- Inclusion du fichier JavaScript contenant notre code p5.js --&gt;
+  &lt;script src="sketch.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </div>
+                <p>Explication :</p>
+                <ul>
+                    <li>
+                        Ce code crée une structure de base pour une page web
+                        avec un fichier HTML.
+                    </li>
+                    <li>
+                        La balise
+                        <code
+                            >&lt;script src="p5.min.js"&gt;&lt;/script&gt;</code
+                        >
+                        inclut la bibliothèque p5.js dans notre projet.
+                    </li>
+                    <li>
+                        Le fichier <code>sketch.js</code> contiendra notre code
+                        p5.js.
+                    </li>
+                </ul>
+            </ol>
+
+            <h2 class="mt-5 text-success">3. Création d'un canvas</h2>
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3 class="card-title">Création d'un canvas</h3>
+                </div>
+                <div class="card-body">
+                    <h4>Exemple :</h4>
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="code-container">
+                                <pre><code class="language-javascript">function setup() &#123;
+  createCanvas(400, 400);
+  background(220); // Gris clair
+&#125;
+
+function draw() &#123;
+  // Ici nous allons générer de l'art
+&#125;</code></pre>
+                                <button
+                                    class="btn btn-primary mt-2"
+                                    (click)="
+                                        runSketch(sketch1Container, sketch1)
+                                    "
+                                >
+                                    <i class="bi bi-play-fill"></i> Run
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div
+                                class="sketch-container"
+                                #sketch1Container
+                                id="sketch1"
+                            ></div>
+                        </div>
+                    </div>
+                    <p>
+                        Explication : Ce code crée un canvas de 400x400 pixels
+                        et remplit le fond avec une couleur grise.
+                    </p>
+                </div>
+            </div>
+
+            <h2 class="mt-5 text-success">
+                4. Concepts de base de l'art génératif
+            </h2>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3 class="card-title">Exemple 1 : Motifs répétitifs</h3>
+                </div>
+                <div class="card-body">
+                    <h4>Exemple :</h4>
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="code-container">
+                                <pre><code class="language-javascript">function setup() &#123;
+  createCanvas(400, 400);
+  background(220); // Gris clair
+
+  let spacing = 40; // Espacement entre les formes
+
+  for (let x = spacing / 2; x &lt; width; x += spacing) &#123;
+    for (let y = spacing / 2; y &lt; height; y += spacing) &#123;
+      ellipse(x, y, 30, 30); // Dessine un cercle
+    &#125;
+  &#125;
+&#125;</code></pre>
+                                <button
+                                    class="btn btn-primary mt-2"
+                                    (click)="
+                                        runSketch(sketch2Container, sketch2)
+                                    "
+                                >
+                                    <i class="bi bi-play-fill"></i> Run
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div
+                                class="sketch-container"
+                                #sketch2Container
+                                id="sketch2"
+                            ></div>
+                        </div>
+                    </div>
+                    <p>Explication :</p>
+                    <ul>
+                        <li>
+                            Nous utilisons deux boucles
+                            <code>for</code> imbriquées pour parcourir les
+                            positions <code>x</code> et <code>y</code> du
+                            canvas.
+                        </li>
+                        <li>
+                            La fonction
+                            <code>ellipse(x, y, 30, 30)</code> dessine un cercle
+                            à chaque position <code>(x, y)</code> avec un
+                            diamètre de 30 pixels.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        Exemple 2 : Utilisation de la randomisation
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <h4>Exemple :</h4>
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="code-container">
+                                <pre><code class="language-javascript">function setup() &#123;
+  createCanvas(400, 400);
+  background(220); // Gris clair
+
+  let spacing = 40;
+
+  for (let x = spacing / 2; x &lt; width; x += spacing) &#123;
+    for (let y = spacing / 2; y &lt; height; y += spacing) &#123;
+      let r = random(10, 30); // Taille aléatoire
+      ellipse(x, y, r, r); // Dessine un cercle avec une taille aléatoire
+    &#125;
+  &#125;
+&#125;</code></pre>
+                                <button
+                                    class="btn btn-primary mt-2"
+                                    (click)="
+                                        runSketch(sketch3Container, sketch3)
+                                    "
+                                >
+                                    <i class="bi bi-play-fill"></i> Run
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div
+                                class="sketch-container"
+                                #sketch3Container
+                                id="sketch3"
+                            ></div>
+                        </div>
+                    </div>
+                    <p>Explication :</p>
+                    <ul>
+                        <li>
+                            La fonction <code>random(min, max)</code> renvoie
+                            une valeur aléatoire entre <code>min</code> et
+                            <code>max</code>.
+                        </li>
+                        <li>
+                            Nous utilisons cette valeur aléatoire pour définir
+                            la taille des cercles, créant ainsi un motif plus
+                            varié.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        Exemple 3 : Algorithmes mathématiques
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <h4>Exemple :</h4>
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="code-container">
+                                <pre><code class="language-javascript">function setup() &#123;
+  createCanvas(400, 400);
+  background(220); // Gris clair
+
+  translate(width / 2, height / 2); // Déplace l'origine au centre du canvas
+
+  let points = 100;
+  let radius = 150;
+
+  beginShape();
+  for (let i = 0; i &lt; points; i++) &#123;
+    let angle = map(i, 0, points, 0, TWO_PI);
+    let x = radius * cos(angle);
+    let y = radius * sin(angle);
+    vertex(x, y);
+  &#125;
+  endShape(CLOSE);
+&#125;</code></pre>
+                                <button
+                                    class="btn btn-primary mt-2"
+                                    (click)="
+                                        runSketch(sketch4Container, sketch4)
+                                    "
+                                >
+                                    <i class="bi bi-play-fill"></i> Run
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div
+                                class="sketch-container"
+                                #sketch4Container
+                                id="sketch4"
+                            ></div>
+                        </div>
+                    </div>
+                    <p>Explication :</p>
+                    <ul>
+                        <li>
+                            La fonction <code>translate(x, y)</code> déplace
+                            l'origine du canvas à la position
+                            <code>(x, y)</code>. Ici, nous déplaçons l'origine
+                            au centre du canvas.
+                        </li>
+                        <li>
+                            La fonction <code>beginShape()</code> commence une
+                            forme définie par les sommets
+                            (<code>vertex()</code>).
+                        </li>
+                        <li>
+                            La fonction <code>endShape(CLOSE)</code> termine la
+                            forme en fermant le contour.
+                        </li>
+                        <li>
+                            La fonction <code>cos(angle)</code> et
+                            <code>sin(angle)</code> sont utilisées pour calculer
+                            les coordonnées <code>x</code> et <code>y</code> des
+                            points sur un cercle, créant ainsi une forme
+                            circulaire.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2 class="mt-5 text-success">5. Conclusion</h2>
+            <p>
+                Vous avez maintenant appris les concepts de base de l'art
+                génératif en p5.js. Vous savez comment créer des motifs
+                répétitifs, utiliser la randomisation et appliquer des
+                algorithmes mathématiques pour générer des œuvres d'art.
+                Expérimentez avec ces concepts pour créer vos propres œuvres
+                d'art uniques.
+            </p>
+
+            <div class="d-flex justify-content-between mt-4">
+                <a class="btn btn-secondary" [routerLink]="['/tutos']">
+                    <i class="bi bi-arrow-left"></i> Retour
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

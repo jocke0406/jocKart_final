@@ -1,1 +1,320 @@
-<p>tuto10 works!</p>
+<div class="container my-5">
+    <div class="row">
+        <div class="col">
+            <h1 class="mb-4 text-primary">
+                <i class="bi bi-triangle"></i> Tutoriel 10 : Introduction à la
+                Trigonométrie en p5.js
+            </h1>
+
+            <h2 class="mt-5 text-success">1. Introduction</h2>
+            <p>
+                Utiliser des fonctions trigonométriques pour dessiner des formes
+                et des motifs intéressants en p5.js.
+            </p>
+
+            <h2 class="mt-5 text-success">
+                2. Configuration de l'environnement
+            </h2>
+            <ol>
+                <li>
+                    Utilisez le même fichier HTML que dans les tutoriels
+                    précédents pour configurer l'environnement :
+                </li>
+                <div class="code-container">
+                    <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;p5.js Tutorial&lt;/title&gt;
+  &lt;!-- Inclusion de la bibliothèque p5.js --&gt;
+  &lt;script src="p5.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;!-- Inclusion du fichier JavaScript contenant notre code p5.js --&gt;
+  &lt;script src="sketch.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </div>
+                <p>Explication :</p>
+                <ul>
+                    <li>
+                        Ce code crée une structure de base pour une page web
+                        avec un fichier HTML.
+                    </li>
+                    <li>
+                        La balise
+                        <code
+                            >&lt;script src="p5.min.js"&gt;&lt;/script&gt;</code
+                        >
+                        inclut la bibliothèque p5.js dans notre projet.
+                    </li>
+                    <li>
+                        Le fichier <code>sketch.js</code> contiendra notre code
+                        p5.js.
+                    </li>
+                </ul>
+            </ol>
+
+            <h2 class="mt-5 text-success">
+                3. Mise en place du canvas et des paramètres
+            </h2>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        a) Initialisation de la taille du canvas
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <h4>Exemple :</h4>
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="code-container">
+                                <pre><code class="language-javascript">function setup() &#123;
+  createCanvas(400, 400); // Crée un canvas de 400x400 pixels
+  background(220); // Remplit le fond avec une couleur gris clair
+&#125;</code></pre>
+                                <button
+                                    class="btn btn-primary mt-2"
+                                    (click)="
+                                        runSketch(sketch1Container, sketch1)
+                                    "
+                                >
+                                    <i class="bi bi-play-fill"></i> Run
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div
+                                class="sketch-container"
+                                #sketch1Container
+                                id="sketch1"
+                            ></div>
+                        </div>
+                    </div>
+                    <p>Explication :</p>
+                    <ul>
+                        <li>
+                            <code>createCanvas(400, 400)</code> : Crée un canvas
+                            de 400x400 pixels.
+                        </li>
+                        <li>
+                            <code>background(220)</code> : Remplit le fond du
+                            canvas avec une couleur gris clair.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2 class="mt-5 text-success">
+                4. Utilisation des fonctions trigonométriques
+            </h2>
+            <p>
+                Nous allons explorer plusieurs exemples pour utiliser les
+                fonctions trigonométriques et dessiner des motifs intéressants.
+            </p>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        Exemple 1 : Cercle basé sur sin() et cos()
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <h4>Exemple :</h4>
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="code-container">
+                                <pre><code class="language-javascript">function setup() &#123;
+  createCanvas(400, 400);
+  background(220);
+  translate(width / 2, height / 2); // Déplace l'origine au centre du canvas
+  strokeWeight(2);
+
+  let radius = 100; // Rayon du cercle
+  let points = 100; // Nombre de points sur le cercle
+
+  for (let i = 0; i < points; i++) &#123;
+    let angle = map(i, 0, points, 0, TWO_PI);
+    let x = radius * cos(angle);
+    let y = radius * sin(angle);
+    point(x, y); // Dessine un point sur le cercle
+  &#125;
+&#125;</code></pre>
+                                <button
+                                    class="btn btn-primary mt-2"
+                                    (click)="
+                                        runSketch(sketch2Container, sketch2)
+                                    "
+                                >
+                                    <i class="bi bi-play-fill"></i> Run
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div
+                                class="sketch-container"
+                                #sketch2Container
+                                id="sketch2"
+                            ></div>
+                        </div>
+                    </div>
+                    <p>Explication :</p>
+                    <ul>
+                        <li>
+                            <code>translate(width / 2, height / 2)</code> :
+                            Déplace l'origine au centre du canvas.
+                        </li>
+                        <li>
+                            <code>map(i, 0, points, 0, TWO_PI)</code> : Mappe
+                            l'index <code>i</code> à un angle entre 0 et 2π.
+                        </li>
+                        <li>
+                            <code>cos(angle)</code> et <code>sin(angle)</code> :
+                            Calculent les coordonnées <code>x</code> et
+                            <code>y</code> des points sur le cercle.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3 class="card-title">Exemple 2 : Spirale</h3>
+                </div>
+                <div class="card-body">
+                    <h4>Exemple :</h4>
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="code-container">
+                                <pre><code class="language-javascript">function setup() &#123;
+  createCanvas(400, 400);
+  background(220);
+  translate(width / 2, height / 2);
+  strokeWeight(2);
+
+  let points = 200; // Nombre de points dans la spirale
+  let angleIncrement = 0.1; // Incrément d'angle
+  let radiusIncrement = 0.5; // Incrément de rayon
+
+  for (let i = 0; i < points; i++) &#123;
+    let angle = i * angleIncrement;
+    let radius = i * radiusIncrement;
+    let x = radius * cos(angle);
+    let y = radius * sin(angle);
+    point(x, y); // Dessine un point sur la spirale
+  &#125;
+&#125;</code></pre>
+                                <button
+                                    class="btn btn-primary mt-2"
+                                    (click)="
+                                        runSketch(sketch3Container, sketch3)
+                                    "
+                                >
+                                    <i class="bi bi-play-fill"></i> Run
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div
+                                class="sketch-container"
+                                #sketch3Container
+                                id="sketch3"
+                            ></div>
+                        </div>
+                    </div>
+                    <p>Explication :</p>
+                    <ul>
+                        <li>
+                            <code>angle = i * angleIncrement</code> : Calcule
+                            l'angle pour chaque point.
+                        </li>
+                        <li>
+                            <code>radius = i * radiusIncrement</code> : Augmente
+                            le rayon progressivement pour créer une spirale.
+                        </li>
+                        <li>
+                            <code>cos(angle)</code> et <code>sin(angle)</code> :
+                            Calculent les coordonnées <code>x</code> et
+                            <code>y</code> des points sur la spirale.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3 class="card-title">Exemple 3 : Motif oscillant</h3>
+                </div>
+                <div class="card-body">
+                    <h4>Exemple :</h4>
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="code-container">
+                                <pre><code class="language-javascript">function setup() &#123;
+  createCanvas(400, 400);
+  background(220);
+  strokeWeight(2);
+
+  let amplitude = 100; // Amplitude de l'oscillation
+  let frequency = 0.05; // Fréquence de l'oscillation
+  let yOffset = height / 2; // Décalage vertical
+
+  for (let x = 0; x < width; x++) &#123;
+    let y = yOffset + amplitude * sin(frequency * x);
+    point(x, y); // Dessine un point sur le motif oscillant
+  &#125;
+&#125;</code></pre>
+                                <button
+                                    class="btn btn-primary mt-2"
+                                    (click)="
+                                        runSketch(sketch4Container, sketch4)
+                                    "
+                                >
+                                    <i class="bi bi-play-fill"></i> Run
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div
+                                class="sketch-container"
+                                #sketch4Container
+                                id="sketch4"
+                            ></div>
+                        </div>
+                    </div>
+                    <p>Explication :</p>
+                    <ul>
+                        <li>
+                            <code>amplitude * sin(frequency * x)</code> :
+                            Calcule la position <code>y</code> du point en
+                            utilisant une fonction sinusoidale.
+                        </li>
+                        <li>
+                            <code
+                                >yOffset + amplitude * sin(frequency * x)</code
+                            >
+                            : Décale le motif verticalement et applique
+                            l'oscillation.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2 class="mt-5 text-success">5. Conclusion</h2>
+            <p>
+                Vous avez maintenant appris à utiliser les fonctions
+                trigonométriques <code>sin()</code> et <code>cos()</code> pour
+                dessiner des formes et des motifs intéressants en p5.js.
+                Expérimentez avec ces concepts pour créer des œuvres d'art
+                encore plus variées et complexes.
+            </p>
+
+            <div class="d-flex justify-content-between mt-4">
+                <a class="btn btn-secondary" [routerLink]="['/tutos']">
+                    <i class="bi bi-arrow-left"></i> Retour
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

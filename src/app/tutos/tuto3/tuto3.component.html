@@ -1,1 +1,355 @@
-<p>tuto3 works!</p>
+<div class="container my-5">
+    <div class="row">
+        <div class="col">
+            <h1 class="mb-4 text-primary">
+                <i class="bi bi-palette"></i> Tutoriel sur l'Utilisation des
+                Couleurs en p5.js
+            </h1>
+
+            <h2 class="mt-5 text-success">1. Introduction</h2>
+            <p>
+                Dans ce tutoriel, nous allons explorer l'utilisation des
+                couleurs en p5.js. Nous apprendrons à utiliser les fonctions
+                <code>fill()</code>, <code>stroke()</code>, et
+                <code>background()</code> pour ajouter de la couleur à nos
+                sketchs. Nous verrons également comment créer des dégradés et
+                utiliser des palettes de couleurs.
+            </p>
+
+            <h2 class="mt-5 text-success">
+                2. Configuration de l'environnement
+            </h2>
+            <ol>
+                <li>
+                    Utilisez le même fichier HTML que dans les tutoriels
+                    précédents pour configurer l'environnement :
+                </li>
+                <div class="code-container">
+                    <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;p5.js Tutorial&lt;/title&gt;
+  &lt;!-- Inclusion de la bibliothèque p5.js --&gt;
+  &lt;script src="p5.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;!-- Inclusion du fichier JavaScript contenant notre code p5.js --&gt;
+  &lt;script src="sketch.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </div>
+                <p>Explication :</p>
+                <ul>
+                    <li>
+                        Ce code crée une structure de base pour une page web
+                        avec un fichier HTML.
+                    </li>
+                    <li>
+                        La balise
+                        <code
+                            >&lt;script src="p5.min.js"&gt;&lt;/script&gt;</code
+                        >
+                        inclut la bibliothèque p5.js dans notre projet.
+                    </li>
+                    <li>
+                        Le fichier <code>sketch.js</code> contiendra notre code
+                        p5.js.
+                    </li>
+                </ul>
+            </ol>
+
+            <h2 class="mt-5 text-success">3. Création d'un canvas</h2>
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3 class="card-title">Création d'un canvas</h3>
+                </div>
+                <div class="card-body">
+                    <h4>Exemple :</h4>
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="code-container">
+                                <pre><code class="language-javascript">function setup() &#123;
+  createCanvas(400, 400);
+  background(255); // Blanc
+&#125;
+
+function draw() &#123;
+  // Ici nous allons dessiner des formes colorées
+&#125;</code></pre>
+                                <button
+                                    class="btn btn-primary mt-2"
+                                    (click)="
+                                        runSketch(sketch1Container, sketch1)
+                                    "
+                                >
+                                    <i class="bi bi-play-fill"></i> Run
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div
+                                class="sketch-container"
+                                #sketch1Container
+                                id="sketch1"
+                            ></div>
+                        </div>
+                    </div>
+                    <p>
+                        Explication : Ce code crée un canvas de 400x400 pixels
+                        et remplit le fond avec une couleur blanche.
+                    </p>
+                </div>
+            </div>
+
+            <h2 class="mt-5 text-success">
+                4. Utilisation des couleurs de base
+            </h2>
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        Exemple 1 : Couleur de remplissage et de contour
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <h4>Exemple :</h4>
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="code-container">
+                                <pre><code class="language-javascript">function setup() &#123;
+  createCanvas(400, 400);
+  background(255); // Blanc
+
+  fill(255, 0, 0); // Rouge
+  stroke(0, 0, 255); // Bleu
+  strokeWeight(4); // Épaisseur du contour
+
+  rect(100, 100, 200, 200); // Dessine un rectangle rouge avec un contour bleu
+&#125;</code></pre>
+                                <button
+                                    class="btn btn-primary mt-2"
+                                    (click)="
+                                        runSketch(sketch2Container, sketch2)
+                                    "
+                                >
+                                    <i class="bi bi-play-fill"></i> Run
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div
+                                class="sketch-container"
+                                #sketch2Container
+                                id="sketch2"
+                            ></div>
+                        </div>
+                    </div>
+                    <p>Explication :</p>
+                    <ul>
+                        <li>
+                            La fonction <code>fill(r, g, b)</code> définit la
+                            couleur de remplissage des formes. Ici,
+                            <code>fill(255, 0, 0)</code> définit une couleur
+                            rouge.
+                        </li>
+                        <li>
+                            La fonction <code>stroke(r, g, b)</code> définit la
+                            couleur du contour des formes. Ici,
+                            <code>stroke(0, 0, 255)</code> définit une couleur
+                            bleue.
+                        </li>
+                        <li>
+                            La fonction
+                            <code>strokeWeight(weight)</code> définit
+                            l'épaisseur du contour. Ici,
+                            <code>strokeWeight(4)</code> définit une épaisseur
+                            de 4 pixels.
+                        </li>
+                        <li>
+                            La fonction
+                            <code>rect(x, y, width, height)</code> dessine un
+                            rectangle aux coordonnées
+                            <code>(100, 100)</code> avec une largeur et une
+                            hauteur de 200 pixels.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2 class="mt-5 text-success">5. Création de dégradés</h2>
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        Exemple 2 : Dégradé linéaire horizontal
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <h4>Exemple :</h4>
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="code-container">
+                                <pre><code class="language-javascript">function setup() &#123;
+  createCanvas(400, 400);
+
+  for (let i = 0; i &lt;= width; i++) &#123;
+    let inter = map(i, 0, width, 0, 1);
+    let c = lerpColor(color(255, 0, 0), color(0, 0, 255), inter);
+    stroke(c);
+    line(i, 0, i, height);
+  &#125;
+&#125;</code></pre>
+                                <button
+                                    class="btn btn-primary mt-2"
+                                    (click)="
+                                        runSketch(sketch3Container, sketch3)
+                                    "
+                                >
+                                    <i class="bi bi-play-fill"></i> Run
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div
+                                class="sketch-container"
+                                #sketch3Container
+                                id="sketch3"
+                            ></div>
+                        </div>
+                    </div>
+                    <p>Explication :</p>
+                    <ul>
+                        <li>
+                            La fonction
+                            <code
+                                >map(value, start1, stop1, start2, stop2)</code
+                            >
+                            mappe une valeur d'une plage à une autre. Ici,
+                            <code>map(i, 0, width, 0, 1)</code> convertit la
+                            position x en une valeur entre 0 et 1.
+                        </li>
+                        <li>
+                            La fonction
+                            <code>lerpColor(c1, c2, amt)</code> interpole
+                            linéairement entre deux couleurs. Ici,
+                            <code
+                                >lerpColor(color(255, 0, 0), color(0, 0, 255),
+                                inter)</code
+                            >
+                            crée un dégradé du rouge au bleu.
+                        </li>
+                        <li>
+                            La fonction <code>stroke(c)</code> définit la
+                            couleur du contour.
+                        </li>
+                        <li>
+                            La fonction
+                            <code>line(x1, y1, x2, y2)</code> dessine une ligne.
+                            Ici, <code>line(i, 0, i, height)</code> dessine des
+                            lignes verticales de haut en bas du canvas.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2 class="mt-5 text-success">
+                6. Utilisation de palettes de couleurs
+            </h2>
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        Exemple 3 : Utilisation d'une palette de couleurs
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <h4>Exemple :</h4>
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="code-container">
+                                <pre><code class="language-javascript">let palette = ['#ff6347', '#ffa500', '#ffff00', '#adff2f', '#40e0d0'];
+
+function setup() &#123;
+  createCanvas(400, 400);
+  noLoop(); // Arrête draw() après le premier appel
+
+  let spacing = 80;
+  for (let x = spacing / 2; x < width; x += spacing) &#123;
+    for (let y = spacing / 2; y < height; y += spacing) &#123;
+      let col = random(palette);
+      fill(col);
+      noStroke();
+      ellipse(x, y, 60, 60);
+    &#125;
+  &#125;
+&#125;</code></pre>
+                                <button
+                                    class="btn btn-primary mt-2"
+                                    (click)="
+                                        runSketch(sketch4Container, sketch4)
+                                    "
+                                >
+                                    <i class="bi bi-play-fill"></i> Run
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div
+                                class="sketch-container"
+                                #sketch4Container
+                                id="sketch4"
+                            ></div>
+                        </div>
+                    </div>
+                    <p>Explication :</p>
+                    <ul>
+                        <li>
+                            <code
+                                >let palette = ['#ff6347', '#ffa500', '#ffff00',
+                                '#adff2f', '#40e0d0']</code
+                            >
+                            définit une palette de couleurs avec des codes
+                            hexadécimaux.
+                        </li>
+                        <li>
+                            La fonction <code>noLoop()</code> empêche
+                            <code>draw()</code> d'être exécutée en boucle, ce
+                            qui est utile lorsque vous voulez dessiner quelque
+                            chose une seule fois.
+                        </li>
+                        <li>
+                            La fonction <code>random(array)</code> renvoie un
+                            élément aléatoire d'un tableau. Ici,
+                            <code>random(palette)</code> choisit une couleur
+                            aléatoire dans la palette.
+                        </li>
+                        <li>
+                            La fonction <code>noStroke()</code> désactive le
+                            contour des formes.
+                        </li>
+                        <li>
+                            La fonction
+                            <code>ellipse(x, y, width, height)</code> dessine un
+                            cercle aux coordonnées <code>(x, y)</code> avec une
+                            largeur et une hauteur de 60 pixels.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2 class="mt-5 text-success">7. Conclusion</h2>
+            <p>
+                Vous avez maintenant appris à utiliser les couleurs en p5.js, à
+                créer des dégradés et à utiliser des palettes de couleurs.
+                Expérimentez avec ces concepts pour ajouter plus de vie et de
+                complexité à vos sketchs. Dans les prochains tutoriels, nous
+                explorerons des techniques encore plus avancées pour créer des
+                œuvres d'art génératif complexes.
+            </p>
+
+            <div class="d-flex justify-content-between mt-4">
+                <a class="btn btn-secondary" [routerLink]="['/tutos']">
+                    <i class="bi bi-arrow-left"></i> Retour
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

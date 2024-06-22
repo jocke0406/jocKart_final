@@ -1,1 +1,342 @@
-<p>tuto5 works!</p>
+<div class="container my-5">
+    <div class="row">
+        <div class="col">
+            <h1 class="mb-4 text-primary">
+                <i class="bi bi-play-circle"></i> Tutoriel sur l'Animation de
+                Formes Simples en p5.js
+            </h1>
+
+            <h2 class="mt-5 text-success">1. Introduction</h2>
+            <p>
+                Dans ce tutoriel, nous allons explorer comment animer des formes
+                simples en p5.js. L'animation permet de créer des œuvres d'art
+                dynamiques et interactives. Nous verrons comment utiliser les
+                fonctions de base pour déplacer, transformer et animer des
+                formes.
+            </p>
+
+            <h2 class="mt-5 text-success">
+                2. Configuration de l'environnement
+            </h2>
+            <ol>
+                <li>
+                    Utilisez le même fichier HTML que dans les tutoriels
+                    précédents pour configurer l'environnement :
+                </li>
+                <div class="code-container">
+                    <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;p5.js Tutorial&lt;/title&gt;
+  &lt;!-- Inclusion de la bibliothèque p5.js --&gt;
+  &lt;script src="p5.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;!-- Inclusion du fichier JavaScript contenant notre code p5.js --&gt;
+  &lt;script src="sketch.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </div>
+                <p>Explication :</p>
+                <ul>
+                    <li>
+                        Ce code crée une structure de base pour une page web
+                        avec un fichier HTML.
+                    </li>
+                    <li>
+                        La balise
+                        <code
+                            >&lt;script src="p5.min.js"&gt;&lt;/script&gt;</code
+                        >
+                        inclut la bibliothèque p5.js dans notre projet.
+                    </li>
+                    <li>
+                        Le fichier <code>sketch.js</code> contiendra notre code
+                        p5.js.
+                    </li>
+                </ul>
+            </ol>
+
+            <h2 class="mt-5 text-success">3. Création d'un canvas</h2>
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3 class="card-title">Création d'un canvas</h3>
+                </div>
+                <div class="card-body">
+                    <h4>Exemple :</h4>
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="code-container">
+                                <pre><code class="language-javascript">function setup() &#123;
+  createCanvas(400, 400);
+  background(220); // Gris clair
+&#125;
+
+function draw() &#123;
+  // Ici nous allons animer des formes
+&#125;</code></pre>
+                                <button
+                                    class="btn btn-primary mt-2"
+                                    (click)="
+                                        runSketch(sketch1Container, sketch1)
+                                    "
+                                >
+                                    <i class="bi bi-play-fill"></i> Run
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div
+                                class="sketch-container"
+                                #sketch1Container
+                                id="sketch1"
+                            ></div>
+                        </div>
+                    </div>
+                    <p>
+                        Explication : Ce code crée un canvas de 400x400 pixels
+                        et remplit le fond avec une couleur grise.
+                    </p>
+                </div>
+            </div>
+
+            <h2 class="mt-5 text-success">4. Animation de formes simples</h2>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        Exemple 1 : Mouvement horizontal d'un cercle
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <h4>Exemple :</h4>
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="code-container">
+                                <pre><code class="language-javascript">let x = 0;
+
+function setup() &#123;
+  createCanvas(400, 400);
+  background(220); // Gris clair
+&#125;
+
+function draw() &#123;
+  background(220); // Efface le dessin précédent
+  ellipse(x, height / 2, 50, 50); // Dessine un cercle
+
+  x += 2; // Incrémente la position x
+
+  if (x > width) &#123;
+    x = 0; // Réinitialise la position x si elle dépasse la largeur du canvas
+  &#125;
+&#125;</code></pre>
+                                <button
+                                    class="btn btn-primary mt-2"
+                                    (click)="
+                                        runSketch(sketch2Container, sketch2)
+                                    "
+                                >
+                                    <i class="bi bi-play-fill"></i> Run
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div
+                                class="sketch-container"
+                                #sketch2Container
+                                id="sketch2"
+                            ></div>
+                        </div>
+                    </div>
+                    <p>Explication :</p>
+                    <ul>
+                        <li>
+                            Nous déclarons une variable <code>x</code> pour
+                            suivre la position horizontale du cercle.
+                        </li>
+                        <li>
+                            Dans la fonction <code>draw()</code>, nous effaçons
+                            le dessin précédent avec
+                            <code>background(220)</code>.
+                        </li>
+                        <li>
+                            Nous dessinons un cercle à la position
+                            <code>(x, height / 2)</code>.
+                        </li>
+                        <li>
+                            Nous incrémentons la position <code>x</code> de 2
+                            pixels à chaque frame.
+                        </li>
+                        <li>
+                            Si <code>x</code> dépasse la largeur du canvas, nous
+                            réinitialisons <code>x</code> à 0.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        Exemple 2 : Mouvement vertical d'un rectangle
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <h4>Exemple :</h4>
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="code-container">
+                                <pre><code class="language-javascript">let y = 0;
+
+function setup() &#123;
+  createCanvas(400, 400);
+  background(220); // Gris clair
+&#125;
+
+function draw() &#123;
+  background(220); // Efface le dessin précédent
+  rect(width / 2 - 25, y, 50, 50); // Dessine un rectangle
+
+  y += 2; // Incrémente la position y
+
+  if (y > height) &#123;
+    y = 0; // Réinitialise la position y si elle dépasse la hauteur du canvas
+  &#125;
+&#125;</code></pre>
+                                <button
+                                    class="btn btn-primary mt-2"
+                                    (click)="
+                                        runSketch(sketch3Container, sketch3)
+                                    "
+                                >
+                                    <i class="bi bi-play-fill"></i> Run
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div
+                                class="sketch-container"
+                                #sketch3Container
+                                id="sketch3"
+                            ></div>
+                        </div>
+                    </div>
+                    <p>Explication :</p>
+                    <ul>
+                        <li>
+                            Nous déclarons une variable <code>y</code> pour
+                            suivre la position verticale du rectangle.
+                        </li>
+                        <li>
+                            Dans la fonction <code>draw()</code>, nous effaçons
+                            le dessin précédent avec
+                            <code>background(220)</code>.
+                        </li>
+                        <li>
+                            Nous dessinons un rectangle à la position
+                            <code>(width / 2 - 25, y)</code>.
+                        </li>
+                        <li>
+                            Nous incrémentons la position <code>y</code> de 2
+                            pixels à chaque frame.
+                        </li>
+                        <li>
+                            Si <code>y</code> dépasse la hauteur du canvas, nous
+                            réinitialisons <code>y</code> à 0.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3 class="card-title">Exemple 3 : Rotation d'un carré</h3>
+                </div>
+                <div class="card-body">
+                    <h4>Exemple :</h4>
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="code-container">
+                                <pre><code class="language-javascript">let angle = 0;
+
+function setup() &#123;
+  createCanvas(400, 400);
+  background(220); // Gris clair
+  rectMode(CENTER); // Dessine les rectangles depuis leur centre
+&#125;
+
+function draw() &#123;
+  background(220); // Efface le dessin précédent
+  translate(width / 2, height / 2); // Déplace l'origine au centre du canvas
+  rotate(angle); // Applique une rotation
+
+  rect(0, 0, 100, 100); // Dessine un carré au centre du canvas
+
+  angle += 0.05; // Incrémente l'angle de rotation
+&#125;</code></pre>
+                                <button
+                                    class="btn btn-primary mt-2"
+                                    (click)="
+                                        runSketch(sketch4Container, sketch4)
+                                    "
+                                >
+                                    <i class="bi bi-play-fill"></i> Run
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div
+                                class="sketch-container"
+                                #sketch4Container
+                                id="sketch4"
+                            ></div>
+                        </div>
+                    </div>
+                    <p>Explication :</p>
+                    <ul>
+                        <li>
+                            Nous déclarons une variable <code>angle</code> pour
+                            suivre l'angle de rotation du carré.
+                        </li>
+                        <li>
+                            Dans la fonction <code>draw()</code>, nous effaçons
+                            le dessin précédent avec
+                            <code>background(220)</code>.
+                        </li>
+                        <li>
+                            Nous déplaçons l'origine du canvas au centre avec
+                            <code>translate(width / 2, height / 2)</code>.
+                        </li>
+                        <li>
+                            Nous appliquons une rotation avec
+                            <code>rotate(angle)</code>.
+                        </li>
+                        <li>
+                            Nous dessinons un carré au centre du canvas avec
+                            <code>rect(0, 0, 100, 100)</code>.
+                        </li>
+                        <li>
+                            Nous incrémentons l'angle de rotation de 0.05
+                            radians à chaque frame.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2 class="mt-5 text-success">5. Conclusion</h2>
+            <p>
+                Vous avez maintenant appris à animer des formes simples en
+                p5.js. Vous savez comment créer des mouvements horizontaux,
+                verticaux et des rotations. Expérimentez avec ces concepts pour
+                créer des animations plus complexes et intéressantes.
+            </p>
+
+            <div class="d-flex justify-content-between mt-4">
+                <a class="btn btn-secondary" [routerLink]="['/tutos']">
+                    <i class="bi bi-arrow-left"></i> Retour
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

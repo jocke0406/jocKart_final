@@ -1,1 +1,364 @@
-<p>tuto8 works!</p>
+<div class="container my-5">
+    <div class="row">
+        <div class="col">
+            <h1 class="mb-4 text-primary">
+                <i class="bi bi-brush"></i> Tutoriel sur les Algorithmes de
+                Dessin Aléatoire en p5.js
+            </h1>
+
+            <h2 class="mt-5 text-success">1. Introduction</h2>
+            <p>
+                Dans ce tutoriel, nous allons explorer comment utiliser des
+                algorithmes de dessin aléatoire en p5.js. L'aléatoire peut
+                ajouter une dimension de surprise et de variabilité à vos
+                créations artistiques, rendant chaque exécution unique.
+            </p>
+
+            <h2 class="mt-5 text-success">
+                2. Configuration de l'environnement
+            </h2>
+            <ol>
+                <li>
+                    Utilisez le même fichier HTML que dans les tutoriels
+                    précédents pour configurer l'environnement :
+                </li>
+                <div class="code-container">
+                    <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;p5.js Tutorial&lt;/title&gt;
+  &lt;!-- Inclusion de la bibliothèque p5.js --&gt;
+  &lt;script src="p5.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;!-- Inclusion du fichier JavaScript contenant notre code p5.js --&gt;
+  &lt;script src="sketch.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </div>
+                <p>Explication :</p>
+                <ul>
+                    <li>
+                        Ce code crée une structure de base pour une page web
+                        avec un fichier HTML.
+                    </li>
+                    <li>
+                        La balise
+                        <code
+                            >&lt;script src="p5.min.js"&gt;&lt;/script&gt;</code
+                        >
+                        inclut la bibliothèque p5.js dans notre projet.
+                    </li>
+                    <li>
+                        Le fichier <code>sketch.js</code> contiendra notre code
+                        p5.js.
+                    </li>
+                </ul>
+            </ol>
+
+            <h2 class="mt-5 text-success">3. Création d'un canvas</h2>
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3 class="card-title">Création d'un canvas</h3>
+                </div>
+                <div class="card-body">
+                    <h4>Exemple :</h4>
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="code-container">
+                                <pre><code class="language-javascript">function setup() &#123;
+  createCanvas(400, 400);
+  background(220); // Gris clair
+&#125;
+
+function draw() &#123;
+  // Ici nous allons utiliser des algorithmes de dessin aléatoire
+&#125;</code></pre>
+                                <button
+                                    class="btn btn-primary mt-2"
+                                    (click)="
+                                        runSketch(sketch1Container, sketch1)
+                                    "
+                                >
+                                    <i class="bi bi-play-fill"></i> Run
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div
+                                class="sketch-container"
+                                #sketch1Container
+                                id="sketch1"
+                            ></div>
+                        </div>
+                    </div>
+                    <p>
+                        Explication : Ce code crée un canvas de 400x400 pixels
+                        et remplit le fond avec une couleur grise.
+                    </p>
+                </div>
+            </div>
+
+            <h2 class="mt-5 text-success">4. Dessin aléatoire</h2>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3 class="card-title">Exemple 1 : Points aléatoires</h3>
+                </div>
+                <div class="card-body">
+                    <h4>Exemple :</h4>
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="code-container">
+                                <pre><code class="language-javascript">function setup() &#123;
+  createCanvas(400, 400);
+  background(220); // Gris clair
+  noLoop(); // Dessine une seule fois
+&#125;
+
+function draw() &#123;
+  for (let i = 0; i < 1000; i++) &#123;
+    let x = random(width);
+    let y = random(height);
+    point(x, y);
+  &#125;
+&#125;</code></pre>
+                                <button
+                                    class="btn btn-primary mt-2"
+                                    (click)="
+                                        runSketch(sketch2Container, sketch2)
+                                    "
+                                >
+                                    <i class="bi bi-play-fill"></i> Run
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div
+                                class="sketch-container"
+                                #sketch2Container
+                                id="sketch2"
+                            ></div>
+                        </div>
+                    </div>
+                    <p>Explication :</p>
+                    <ul>
+                        <li>
+                            La fonction <code>random(max)</code> renvoie une
+                            valeur aléatoire entre 0 et <code>max</code>.
+                        </li>
+                        <li>
+                            Nous utilisons une boucle <code>for</code> pour
+                            dessiner 1000 points à des positions aléatoires sur
+                            le canvas.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        Exemple 2 : Cercles de tailles et de positions
+                        aléatoires
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <h4>Exemple :</h4>
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="code-container">
+                                <pre><code class="language-javascript">function setup() &#123;
+  createCanvas(400, 400);
+  background(220); // Gris clair
+  noLoop(); // Dessine une seule fois
+&#125;
+
+function draw() &#123;
+  for (let i = 0; i < 100; i++) &#123;
+    let x = random(width);
+    let y = random(height);
+    let r = random(10, 50);
+    ellipse(x, y, r, r);
+  &#125;
+&#125;</code></pre>
+                                <button
+                                    class="btn btn-primary mt-2"
+                                    (click)="
+                                        runSketch(sketch3Container, sketch3)
+                                    "
+                                >
+                                    <i class="bi bi-play-fill"></i> Run
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div
+                                class="sketch-container"
+                                #sketch3Container
+                                id="sketch3"
+                            ></div>
+                        </div>
+                    </div>
+                    <p>Explication :</p>
+                    <ul>
+                        <li>
+                            Nous utilisons <code>random(min, max)</code> pour
+                            générer des tailles de cercle aléatoires entre
+                            <code>min</code> et <code>max</code>.
+                        </li>
+                        <li>
+                            Une boucle <code>for</code> dessine 100 cercles avec
+                            des positions et des tailles aléatoires.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3 class="card-title">Exemple 3 : Couleurs aléatoires</h3>
+                </div>
+                <div class="card-body">
+                    <h4>Exemple :</h4>
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="code-container">
+                                <pre><code class="language-javascript">function setup() &#123;
+  createCanvas(400, 400);
+  background(220); // Gris clair
+  noLoop(); // Dessine une seule fois
+&#125;
+
+function draw() &#123;
+  for (let i = 0; i < 50; i++) &#123;
+    let x = random(width);
+    let y = random(height);
+    let w = random(20, 100);
+    let h = random(20, 100);
+    let col = color(random(255), random(255), random(255));
+    fill(col);
+    rect(x, y, w, h);
+  &#125;
+&#125;</code></pre>
+                                <button
+                                    class="btn btn-primary mt-2"
+                                    (click)="
+                                        runSketch(sketch4Container, sketch4)
+                                    "
+                                >
+                                    <i class="bi bi-play-fill"></i> Run
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div
+                                class="sketch-container"
+                                #sketch4Container
+                                id="sketch4"
+                            ></div>
+                        </div>
+                    </div>
+                    <p>Explication :</p>
+                    <ul>
+                        <li>
+                            Nous utilisons <code>color(r, g, b)</code> avec des
+                            valeurs aléatoires pour générer des couleurs de
+                            remplissage aléatoires.
+                        </li>
+                        <li>
+                            Une boucle <code>for</code> dessine 50 rectangles
+                            avec des positions, des tailles et des couleurs
+                            aléatoires.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        Exemple 4 : Motifs aléatoires avec rotation
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <h4>Exemple :</h4>
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="code-container">
+                                <pre><code class="language-javascript">function setup() &#123;
+  createCanvas(400, 400);
+  background(220); // Gris clair
+  noLoop(); // Dessine une seule fois
+&#125;
+
+function draw() &#123;
+  for (let i = 0; i < 100; i++) &#123;
+    push();
+    let x = random(width);
+    let y = random(height);
+    let r = random(10, 50);
+    let angle = random(TWO_PI);
+    translate(x, y);
+    rotate(angle);
+    rect(0, 0, r, r);
+    pop();
+  &#125;
+&#125;</code></pre>
+                                <button
+                                    class="btn btn-primary mt-2"
+                                    (click)="
+                                        runSketch(sketch5Container, sketch5)
+                                    "
+                                >
+                                    <i class="bi bi-play-fill"></i> Run
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div
+                                class="sketch-container"
+                                #sketch5Container
+                                id="sketch5"
+                            ></div>
+                        </div>
+                    </div>
+                    <p>Explication :</p>
+                    <ul>
+                        <li>
+                            Nous utilisons <code>push()</code> et
+                            <code>pop()</code> pour sauvegarder et restaurer le
+                            contexte de dessin.
+                        </li>
+                        <li>
+                            La fonction <code>rotate(angle)</code> applique une
+                            rotation avec un angle aléatoire.
+                        </li>
+                        <li>
+                            Une boucle <code>for</code> dessine 100 rectangles
+                            avec des positions, des tailles et des rotations
+                            aléatoires.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2 class="mt-5 text-success">5. Conclusion</h2>
+            <p>
+                Vous avez maintenant appris à utiliser des algorithmes de dessin
+                aléatoire en p5.js. Vous savez comment générer des positions,
+                des tailles, des couleurs et des rotations aléatoires pour créer
+                des œuvres d'art uniques. Expérimentez avec ces concepts pour
+                explorer davantage les possibilités de l'aléatoire dans vos
+                créations.
+            </p>
+
+            <div class="d-flex justify-content-between mt-4">
+                <a class="btn btn-secondary" [routerLink]="['/tutos']">
+                    <i class="bi bi-arrow-left"></i> Retour
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

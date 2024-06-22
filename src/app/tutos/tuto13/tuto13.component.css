@@ -1,0 +1,39 @@
+pre code {
+    display: block;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    overflow: auto;
+}
+h2,
+h3 {
+    margin-top: 2rem;
+}
+ul,
+ol {
+    margin-left: 1.5rem;
+}
+.code-container {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+}
+.sketch-container {
+    width: 100%;
+    max-width: 100%;
+    height: 400px;
+    margin-top: 10px;
+    background-color: #fff;
+}
+button {
+    display: block;
+    margin-top: 10px;
+}
+.card-title {
+    font-weight: bold;
+    color: #007bff;
+}
+.card-header {
+    background-color: #f1f1f1;
+}

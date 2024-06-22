@@ -1,0 +1,35 @@
+.card-title {
+    font-weight: bold;
+}
+
+.card-text {
+    font-size: 0.9rem;
+}
+.container {
+    margin-top: 800px; /* Ajustez cette valeur selon vos besoins */
+}
+.img-fluid {
+    max-height: 150px;
+    object-fit: cover;
+}
+
+.card {
+    transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    transition:
+        background-color 0.3s ease-in-out,
+        border-color 0.3s ease-in-out;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}

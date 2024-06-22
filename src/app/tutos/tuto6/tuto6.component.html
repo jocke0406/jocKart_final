@@ -1,1 +1,387 @@
-<p>tuto6 works!</p>
+<div class="container my-5">
+    <div class="row">
+        <div class="col">
+            <h1 class="mb-4 text-primary">
+                <i class="bi bi-mouse"></i> Tutoriel sur l'Interaction
+                Utilisateur avec la Souris et le Clavier en p5.js
+            </h1>
+
+            <h2 class="mt-5 text-success">1. Introduction</h2>
+            <p>
+                Dans ce tutoriel, nous allons explorer comment ajouter des
+                interactions utilisateur à vos sketchs p5.js en utilisant la
+                souris et le clavier. L'interaction rend les œuvres d'art plus
+                dynamiques et engageantes.
+            </p>
+
+            <h2 class="mt-5 text-success">
+                2. Configuration de l'environnement
+            </h2>
+            <ol>
+                <li>
+                    Utilisez le même fichier HTML que dans les tutoriels
+                    précédents pour configurer l'environnement :
+                </li>
+                <div class="code-container">
+                    <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;p5.js Tutorial&lt;/title&gt;
+  &lt;!-- Inclusion de la bibliothèque p5.js --&gt;
+  &lt;script src="p5.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;!-- Inclusion du fichier JavaScript contenant notre code p5.js --&gt;
+  &lt;script src="sketch.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </div>
+                <p>Explication :</p>
+                <ul>
+                    <li>
+                        Ce code crée une structure de base pour une page web
+                        avec un fichier HTML.
+                    </li>
+                    <li>
+                        La balise
+                        <code
+                            >&lt;script src="p5.min.js"&gt;&lt;/script&gt;</code
+                        >
+                        inclut la bibliothèque p5.js dans notre projet.
+                    </li>
+                    <li>
+                        Le fichier <code>sketch.js</code> contiendra notre code
+                        p5.js.
+                    </li>
+                </ul>
+            </ol>
+
+            <h2 class="mt-5 text-success">3. Création d'un canvas</h2>
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3 class="card-title">Création d'un canvas</h3>
+                </div>
+                <div class="card-body">
+                    <h4>Exemple :</h4>
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="code-container">
+                                <pre><code class="language-javascript">function setup() &#123;
+  createCanvas(400, 400);
+  background(220); // Gris clair
+&#125;
+
+function draw() &#123;
+  // Ici nous allons ajouter des interactions utilisateur
+&#125;</code></pre>
+                                <button
+                                    class="btn btn-primary mt-2"
+                                    (click)="
+                                        runSketch(sketch1Container, sketch1)
+                                    "
+                                >
+                                    <i class="bi bi-play-fill"></i> Run
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div
+                                class="sketch-container"
+                                #sketch1Container
+                                id="sketch1"
+                            ></div>
+                        </div>
+                    </div>
+                    <p>
+                        Explication : Ce code crée un canvas de 400x400 pixels
+                        et remplit le fond avec une couleur grise.
+                    </p>
+                </div>
+            </div>
+
+            <h2 class="mt-5 text-success">4. Interaction avec la souris</h2>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        Exemple 1 : Dessiner avec la souris
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <h4>Exemple :</h4>
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="code-container">
+                                <pre><code class="language-javascript">function setup() &#123;
+  createCanvas(400, 400);
+  background(220); // Gris clair
+&#125;
+
+function draw() &#123;
+  if (mouseIsPressed) &#123;
+    fill(0); // Noir
+  &#125; else &#123;
+    fill(255); // Blanc
+  &#125;
+  ellipse(mouseX, mouseY, 20, 20); // Dessine un cercle à la position de la souris
+&#125;</code></pre>
+                                <button
+                                    class="btn btn-primary mt-2"
+                                    (click)="
+                                        runSketch(sketch2Container, sketch2)
+                                    "
+                                >
+                                    <i class="bi bi-play-fill"></i> Run
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div
+                                class="sketch-container"
+                                #sketch2Container
+                                id="sketch2"
+                            ></div>
+                        </div>
+                    </div>
+                    <p>Explication :</p>
+                    <ul>
+                        <li>
+                            La variable <code>mouseIsPressed</code> est true si
+                            un bouton de la souris est enfoncé.
+                        </li>
+                        <li>
+                            Nous utilisons <code>mouseX</code> et
+                            <code>mouseY</code> pour obtenir les coordonnées
+                            actuelles de la souris.
+                        </li>
+                        <li>
+                            Un cercle est dessiné à la position de la souris
+                            avec une couleur qui change selon que la souris est
+                            enfoncée ou non.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        Exemple 2 : Changer le fond avec un clic de souris
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <h4>Exemple :</h4>
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="code-container">
+                                <pre><code class="language-javascript">function setup() &#123;
+  createCanvas(400, 400);
+  background(220); // Gris clair
+&#125;
+
+function draw() &#123;
+  // Pas de dessin dans draw()
+&#125;
+
+function mousePressed() &#123;
+  background(random(255), random(255), random(255)); // Change la couleur de fond de manière aléatoire
+&#125;</code></pre>
+                                <button
+                                    class="btn btn-primary mt-2"
+                                    (click)="
+                                        runSketch(sketch3Container, sketch3)
+                                    "
+                                >
+                                    <i class="bi bi-play-fill"></i> Run
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div
+                                class="sketch-container"
+                                #sketch3Container
+                                id="sketch3"
+                            ></div>
+                        </div>
+                    </div>
+                    <p>Explication :</p>
+                    <ul>
+                        <li>
+                            La fonction <code>mousePressed()</code> est appelée
+                            chaque fois que l'utilisateur clique sur le bouton
+                            de la souris.
+                        </li>
+                        <li>
+                            Nous utilisons la fonction
+                            <code>random(255)</code> pour générer des valeurs de
+                            couleur aléatoires.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2 class="mt-5 text-success">5. Interaction avec le clavier</h2>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        Exemple 3 : Déplacer un cercle avec les touches du
+                        clavier
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <h4>Exemple :</h4>
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="code-container">
+                                <pre><code class="language-javascript">let x = 200;
+let y = 200;
+
+function setup() &#123;
+  createCanvas(400, 400);
+  background(220); // Gris clair
+&#125;
+
+function draw() &#123;
+  background(220); // Efface le dessin précédent
+  ellipse(x, y, 50, 50); // Dessine un cercle
+&#125;
+
+function keyPressed() &#123;
+  if (keyCode === LEFT_ARROW) &#123;
+    x -= 10; // Déplace le cercle vers la gauche
+  &#125; else if (keyCode === RIGHT_ARROW) &#123;
+    x += 10; // Déplace le cercle vers la droite
+  &#125; else if (keyCode === UP_ARROW) &#123;
+    y -= 10; // Déplace le cercle vers le haut
+  &#125; else if (keyCode === DOWN_ARROW) &#123;
+    y += 10; // Déplace le cercle vers le bas
+  &#125;
+&#125;</code></pre>
+                                <button
+                                    class="btn btn-primary mt-2"
+                                    (click)="
+                                        runSketch(sketch4Container, sketch4)
+                                    "
+                                >
+                                    <i class="bi bi-play-fill"></i> Run
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div
+                                class="sketch-container"
+                                #sketch4Container
+                                id="sketch4"
+                            ></div>
+                        </div>
+                    </div>
+                    <p>Explication :</p>
+                    <ul>
+                        <li>
+                            Nous déclarons des variables <code>x</code> et
+                            <code>y</code> pour suivre la position du cercle.
+                        </li>
+                        <li>
+                            La fonction <code>keyPressed()</code> est appelée
+                            chaque fois qu'une touche du clavier est enfoncée.
+                        </li>
+                        <li>
+                            La variable <code>keyCode</code> contient le code de
+                            la touche enfoncée. Nous vérifions si elle
+                            correspond aux flèches directionnelles pour déplacer
+                            le cercle.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        Exemple 4 : Changer la couleur du cercle avec des
+                        touches spécifiques
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <h4>Exemple :</h4>
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="code-container">
+                                <pre><code class="language-javascript">let x = 200;
+let y = 200;
+let col = 255; // Blanc
+
+function setup() &#123;
+  createCanvas(400, 400);
+  background(220); // Gris clair
+&#125;
+
+function draw() &#123;
+  background(220); // Efface le dessin précédent
+  fill(col); // Applique la couleur actuelle
+  ellipse(x, y, 50, 50); // Dessine un cercle
+&#125;
+
+function keyPressed() &#123;
+  if (key === 'r') &#123;
+    col = color(255, 0, 0); // Rouge
+  &#125; else if (key === 'g') &#123;
+    col = color(0, 255, 0); // Vert
+  &#125; else if (key === 'b') &#123;
+    col = color(0, 0, 255); // Bleu
+  &#125;
+&#125;</code></pre>
+                                <button
+                                    class="btn btn-primary mt-2"
+                                    (click)="
+                                        runSketch(sketch5Container, sketch5)
+                                    "
+                                >
+                                    <i class="bi bi-play-fill"></i> Run
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div
+                                class="sketch-container"
+                                #sketch5Container
+                                id="sketch5"
+                            ></div>
+                        </div>
+                    </div>
+                    <p>Explication :</p>
+                    <ul>
+                        <li>
+                            Nous déclarons une variable <code>col</code> pour
+                            suivre la couleur du cercle.
+                        </li>
+                        <li>
+                            La variable <code>key</code> contient la touche
+                            enfoncée sous forme de caractère. Nous vérifions si
+                            elle correspond à 'r', 'g' ou 'b' pour changer la
+                            couleur du cercle.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2 class="mt-5 text-success">6. Conclusion</h2>
+            <p>
+                Vous avez maintenant appris à ajouter des interactions
+                utilisateur à vos sketchs p5.js en utilisant la souris et le
+                clavier. Vous savez comment dessiner avec la souris, changer des
+                couleurs de fond ou de formes, et déplacer des objets avec les
+                touches du clavier. Expérimentez avec ces concepts pour rendre
+                vos œuvres d'art plus interactives et engageantes.
+            </p>
+
+            <div class="d-flex justify-content-between mt-4">
+                <a class="btn btn-secondary" [routerLink]="['/tutos']">
+                    <i class="bi bi-arrow-left"></i> Retour
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

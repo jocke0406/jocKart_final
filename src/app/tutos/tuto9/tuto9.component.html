@@ -1,1 +1,338 @@
-<p>tuto9 works!</p>
+<div class="container my-5">
+    <div class="row">
+        <div class="col">
+            <h1 class="mb-4 text-primary">
+                <i class="bi bi-brush"></i> Tutoriel 9 : Création d'un Motif
+                Aléatoire en p5.js
+            </h1>
+
+            <h2 class="mt-5 text-success">1. Introduction</h2>
+            <p>
+                Dans ce tutoriel, nous allons explorer comment utiliser des
+                algorithmes de dessin aléatoire en p5.js. L'aléatoire peut
+                ajouter une dimension de surprise et de variabilité à vos
+                créations artistiques, rendant chaque exécution unique.
+            </p>
+
+            <h2 class="mt-5 text-success">
+                2. Configuration de l'environnement
+            </h2>
+            <ol>
+                <li>
+                    Utilisez le même fichier HTML que dans les tutoriels
+                    précédents pour configurer l'environnement :
+                </li>
+                <div class="code-container">
+                    <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;p5.js Tutorial&lt;/title&gt;
+  &lt;!-- Inclusion de la bibliothèque p5.js --&gt;
+  &lt;script src="p5.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;!-- Inclusion du fichier JavaScript contenant notre code p5.js --&gt;
+  &lt;script src="sketch.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </div>
+                <p>Explication :</p>
+                <ul>
+                    <li>
+                        Ce code crée une structure de base pour une page web
+                        avec un fichier HTML.
+                    </li>
+                    <li>
+                        La balise
+                        <code
+                            >&lt;script src="p5.min.js"&gt;&lt;/script&gt;</code
+                        >
+                        inclut la bibliothèque p5.js dans notre projet.
+                    </li>
+                    <li>
+                        Le fichier <code>sketch.js</code> contiendra notre code
+                        p5.js.
+                    </li>
+                </ul>
+            </ol>
+
+            <h2 class="mt-5 text-success">3. Création d'un canvas</h2>
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3 class="card-title">Création d'un canvas</h3>
+                </div>
+                <div class="card-body">
+                    <h4>Exemple :</h4>
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="code-container">
+                                <pre><code class="language-javascript">function setup() &#123;
+  createCanvas(400, 400);
+  background(220); // Gris clair
+  let step = 20; // Taille de chaque cellule de la grille
+
+  for (let x = 0; x &lt; width; x += step) &#123;
+    for (let y = 0; y &lt; height; y += step) &#123;
+      drawLine(x, y, step, step);
+    &#125;
+  &#125;
+&#125;
+
+function drawLine(x, y, width, height) &#123;
+  let leftToRight = random() &gt;= 0.5;
+
+  if (leftToRight) &#123;
+    line(x, y, x + width, y + height);
+  &#125; else &#123;
+    line(x + width, y, x, y + height);
+  &#125;
+&#125;</code></pre>
+                                <button
+                                    class="btn btn-primary mt-2"
+                                    (click)="
+                                        runSketch(sketch1Container, sketch1)
+                                    "
+                                >
+                                    <i class="bi bi-play-fill"></i> Run
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div
+                                class="sketch-container"
+                                #sketch1Container
+                                id="sketch1"
+                            ></div>
+                        </div>
+                    </div>
+                    <p>
+                        Explication : Ce code crée un canvas carré et remplit
+                        chaque cellule avec une ligne diagonale aléatoire.
+                    </p>
+                </div>
+            </div>
+
+            <h2 class="mt-5 text-success">4. Dessin aléatoire</h2>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        Exemple 1 : Changer la taille et la couleur des lignes
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <h4>Exemple :</h4>
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="code-container">
+                                <pre><code class="language-javascript">function setup() &#123;
+  createCanvas(400, 400);
+  background(220); // Gris clair
+  let step = 20;
+
+  strokeWeight(2); // Épaisseur de la ligne
+  stroke(0); // Couleur de la ligne (noir)
+
+  for (let x = 0; x &lt; width; x += step) &#123;
+    for (let y = 0; y &lt; height; y += step) &#123;
+      drawLine(x, y, step, step);
+    &#125;
+  &#125;
+&#125;
+
+function drawLine(x, y, width, height) &#123;
+  let leftToRight = random() &gt;= 0.5;
+
+  if (leftToRight) &#123;
+    line(x, y, x + width, y + height);
+  &#125; else &#123;
+    line(x + width, y, x, y + height);
+  &#125;
+&#125;</code></pre>
+                                <button
+                                    class="btn btn-primary mt-2"
+                                    (click)="
+                                        runSketch(sketch2Container, sketch2)
+                                    "
+                                >
+                                    <i class="bi bi-play-fill"></i> Run
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div
+                                class="sketch-container"
+                                #sketch2Container
+                                id="sketch2"
+                            ></div>
+                        </div>
+                    </div>
+                    <p>Explication :</p>
+                    <ul>
+                        <li>
+                            <code>strokeWeight(2)</code> : Définit l'épaisseur
+                            des lignes à 2 pixels.
+                        </li>
+                        <li>
+                            <code>stroke(0)</code> : Définit la couleur des
+                            lignes à noir.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        Exemple 2 : Ajouter des couleurs aléatoires
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <h4>Exemple :</h4>
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="code-container">
+                                <pre><code class="language-javascript">function setup() &#123;
+  createCanvas(400, 400);
+  background(220); // Gris clair
+  let step = 20;
+
+  for (let x = 0; x &lt; width; x += step) &#123;
+    for (let y = 0; y &lt; height; y += step) &#123;
+      stroke(random(255), random(255), random(255)); // Couleur aléatoire
+      drawLine(x, y, step, step);
+    &#125;
+  &#125;
+&#125;
+
+function drawLine(x, y, width, height) &#123;
+  let leftToRight = random() &gt;= 0.5;
+
+  if (leftToRight) &#123;
+    line(x, y, x + width, y + height);
+  &#125; else &#123;
+    line(x + width, y, x, y + height);
+  &#125;
+&#125;</code></pre>
+                                <button
+                                    class="btn btn-primary mt-2"
+                                    (click)="
+                                        runSketch(sketch3Container, sketch3)
+                                    "
+                                >
+                                    <i class="bi bi-play-fill"></i> Run
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div
+                                class="sketch-container"
+                                #sketch3Container
+                                id="sketch3"
+                            ></div>
+                        </div>
+                    </div>
+                    <p>Explication :</p>
+                    <ul>
+                        <li>
+                            <code
+                                >stroke(random(255), random(255),
+                                random(255))</code
+                            >
+                            : Définit une couleur de ligne aléatoire en
+                            utilisant des valeurs aléatoires pour les
+                            composantes rouge, vert et bleu.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3 class="card-title">Exemple 3 : Animer les lignes</h3>
+                </div>
+                <div class="card-body">
+                    <h4>Exemple :</h4>
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="code-container">
+                                <pre><code class="language-javascript">function setup() &#123;
+  createCanvas(400, 400);
+  frameRate(10); // Nombre de frames par seconde
+&#125;
+
+function draw() &#123;
+  background(220); // Gris clair
+  let step = 20;
+
+  for (let x = 0; x &lt; width; x += step) &#123;
+    for (let y = 0; y &lt; height; y += step) &#123;
+      stroke(random(255), random(255), random(255)); // Couleur aléatoire
+      drawLine(x, y, step, step);
+    &#125;
+  &#125;
+&#125;
+
+function drawLine(x, y, width, height) &#123;
+  let leftToRight = random() &gt;= 0.5;
+
+  if (leftToRight) &#123;
+    line(x, y, x + width, y + height);
+  &#125; else &#123;
+    line(x + width, y, x, y + height);
+  &#125;
+&#125;</code></pre>
+                                <button
+                                    class="btn btn-primary mt-2"
+                                    (click)="
+                                        runSketch(sketch4Container, sketch4)
+                                    "
+                                >
+                                    <i class="bi bi-play-fill"></i> Run
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div
+                                class="sketch-container"
+                                #sketch4Container
+                                id="sketch4"
+                            ></div>
+                        </div>
+                    </div>
+                    <p>Explication :</p>
+                    <ul>
+                        <li>
+                            <code>frameRate(10)</code> : Définit la fréquence
+                            d'images à 10 frames par seconde, ce qui rendra
+                            l'animation plus fluide.
+                        </li>
+                        <li>
+                            <code>background(220)</code> : Efface le dessin
+                            précédent en remplissant le fond avec une couleur
+                            gris clair à chaque frame, pour que les nouvelles
+                            lignes ne soient pas dessinées par-dessus les
+                            anciennes.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2 class="mt-5 text-success">5. Conclusion</h2>
+            <p>
+                Ce tutoriel vous a montré comment reproduire un motif aléatoire
+                de lignes diagonales en p5.js et comment aller plus loin avec
+                des personnalisations et des animations. Expérimentez avec ces
+                concepts pour créer des œuvres d'art encore plus variées et
+                intéressantes.
+            </p>
+
+            <div class="d-flex justify-content-between mt-4">
+                <a class="btn btn-secondary" [routerLink]="['/tutos']">
+                    <i class="bi bi-arrow-left"></i> Retour
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

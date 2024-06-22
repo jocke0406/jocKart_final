@@ -1,0 +1,68 @@
+.banner img {
+    width: 100%;
+    height: 100%;
+    max-height: 500px; /* Ajustez selon la hauteur souhaitée */
+    object-fit: cover; /* Pour s'assurer que l'image couvre bien l'espace disponible */
+}
+.card {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-body p {
+    flex-grow: 1;
+}
+
+.card-body .btn {
+    margin-top: auto;
+}
+
+.gradient-btn {
+    background: linear-gradient(45deg, #f06, #ff9);
+    border: none;
+    color: white;
+    transition: background 0.3s ease;
+}
+
+.gradient-btn:hover {
+    background: linear-gradient(45deg, #ff9, #f06);
+}
+
+.gradient-btn-1 {
+    background: linear-gradient(45deg, #00c6ff, #0072ff);
+    border: none;
+    color: white;
+    transition: background 0.3s ease;
+}
+
+.gradient-btn-1:hover {
+    background: linear-gradient(45deg, #0072ff, #00c6ff);
+}
+
+.gradient-btn-2 {
+    background: linear-gradient(45deg, #ff7e5f, #feb47b);
+    border: none;
+    color: white;
+    transition: background 0.3s ease;
+}
+
+.gradient-btn-2:hover {
+    background: linear-gradient(45deg, #feb47b, #ff7e5f);
+}
+
+.gradient-btn-3 {
+    background: linear-gradient(45deg, #4caf50, #8bc34a);
+    border: none;
+    color: white;
+    transition: background 0.3s ease;
+}
+
+.gradient-btn-3:hover {
+    background: linear-gradient(45deg, #8bc34a, #4caf50);
+}
