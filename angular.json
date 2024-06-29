@@ -13,12 +13,12 @@
                 "build": {
                     "builder": "@angular-devkit/build-angular:browser",
                     "options": {
-                        "outputPath": "dist/jockart",
+                        "outputPath": "dist/jockart/browser",
                         "index": "src/index.html",
                         "main": "src/main.ts",
                         "polyfills": ["zone.js"],
                         "tsConfig": "tsconfig.app.json",
-                        "assets": ["src/favicon.ico", "src/assets"],
+                        "assets": ["src/favicon.ico", "src/assets","src/sitemap.xml"],
                         "styles": [
                             "src/styles.css",
                             "node_modules/bootstrap/dist/css/bootstrap.min.css",
@@ -39,8 +39,8 @@
                             "budgets": [
                                 {
                                     "type": "initial",
-                                    "maximumWarning": "500kb",
-                                    "maximumError": "1mb"
+                                    "maximumWarning": "2mb",
+                                    "maximumError": "3mb"
                                 },
                                 {
                                     "type": "anyComponentStyle",
@@ -88,8 +88,65 @@
                         "styles": ["src/styles.css"],
                         "scripts": []
                     }
+                },
+                "server": {
+                  "builder": "@angular-devkit/build-angular:server",
+                  "options": {
+                    "outputPath": "dist/jockart/server",
+                    "main": "server.ts",
+                    "tsConfig": "tsconfig.server.json"
+                  },
+                  "configurations": {
+                    "production": {
+                      "outputHashing": "media"
+                    },
+                    "development": {
+                      "buildOptimizer": false,
+                      "optimization": false,
+                      "sourceMap": true,
+                      "extractLicenses": false,
+                      "vendorChunk": true
+                    }
+                  },
+                  "defaultConfiguration": "production"
+                },
+                "serve-ssr": {
+                  "builder": "@nguniversal/builders:ssr-dev-server",
+                  "configurations": {
+                    "development": {
+                      "browserTarget": "jockart:build:development",
+                      "serverTarget": "jockart:server:development"
+                    },
+                    "production": {
+                      "browserTarget": "jockart:build:production",
+                      "serverTarget": "jockart:server:production"
+                    }
+                  },
+                  "defaultConfiguration": "development"
+                },
+                "prerender": {
+                  "builder": "@nguniversal/builders:prerender",
+                  "options": {
+                    "routes": [
+                      "/"
+                    ]
+                  },
+                  "configurations": {
+                    "production": {
+                      "browserTarget": "jockart:build:production",
+                      "serverTarget": "jockart:server:production"
+                    },
+                    "development": {
+                      "browserTarget": "jockart:build:development",
+                      "serverTarget": "jockart:server:development"
+                    }
+                  },
+                  "defaultConfiguration": "production"
                 }
             }
         }
+    },
+    "cli": {
+      "analytics": false
     }
 }
